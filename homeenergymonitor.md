@@ -1,10 +1,10 @@
-# Home Energy Monitor (emonTx v3, Raspberry Pi, Emoncms V8)
+## Home Energy Monitor (emonTx v3, Raspberry Pi, Emoncms V8)
 
 This guide details how to build a web-connected home electricity monitor using the OpenEnergyMonitor emonTx V3, a Raspberry Pi (with RFM12Pi expansion board) and Emoncms web-app for logging and viewing the data. At the end of this guide you should have your system up and running with your energy data accessible on a mobile friendly web page like this:
 
-## System overview
+### System overview
 
-## Parts list
+### Parts list
 
 Here are the parts you will need, most of them are available from the OpenEnergyMonitor shop.
 
@@ -27,7 +27,7 @@ You might also need:
 
 1x USB to serial programmer
 
-## System setup
+### System setup
 
 The OpenEnergyMonitor hardware listed above all come pre-assembled, no soldering is required. However for this particular configuration we need to change the default firmware on the emonTx in order to gain the benefit of the new addition of accumulated watt-hours calculation on the emonx which increases the accuracy and reliability of the energy measurement.
 
@@ -51,7 +51,7 @@ and click on Upload.
     Plug in the AC-AC Voltage adapter this both power's the emonTx and is used for sampling the AC mains voltage. A red light should now appear near the AC-AC adapter input and start flashing once every 10 seconds. Thats the emonTx set up! The emonTx can also be powered by batteries or from DC power source. See the emonTx technical wiki for info on using alternate power sources and interoperating the red LED behaviour
     Plug the RFM12Pi hardware expansion module onto the Pi's GPIO pins taking care to align up pin 1, the RFM12Pi should be connected to the GPIO pins connector closest to the edge of the pi.
 
-## Preparing the raspberrypi SD Card
+### Preparing the raspberrypi SD Card
 
 Download the official raspberrpi raspbian image and write to the SD card.
 
@@ -169,7 +169,7 @@ Change mount mode:
     sudo mount -o remount,ro /dev/mmcblk0p2  /
     sudo mount -o remount,rw /dev/mmcblk0p2  /
 
-## Setting up emoncms
+### Setting up emoncms
 
 Navigate to the Node tab.
 
@@ -199,7 +199,7 @@ Configuration                    After initial configuration               After
 
 Open the page on your mobile phone and bookmark it. When you click on the bookmark it will automatically log you in and bring up your electricity dashboard.
 
-## Using the monitor
+### Using the monitor
 
 The appliance list tool is a useful exercise for answering questions such as how much electricity can be save by using low energy lighting such as LED's? How much electricity does turning off lighting when not in use save?
 Login to emoncms.org and then navigate to Extras > Report > Appliance list
