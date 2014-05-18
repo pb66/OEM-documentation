@@ -1,32 +1,36 @@
-# Home Energy Monitor 
+# Home Energy Monitor
+
 **(emonTx v3, Raspberry Pi, Emoncms V8)**
 
 This guide details how to build a web-connected home electricity monitor using the OpenEnergyMonitor emonTx V3, a Raspberry Pi (with RFM12Pi expansion board) and Emoncms web-app for logging and viewing the data. At the end of this guide you should have your system up and running with your energy data accessible on a mobile friendly web page like this:
 
+![System overview](files/cover.jpg)
+
 ## System overview
+
+![System overview](files/system.jpg)
 
 ## Parts list
 
 Here are the parts you will need, most of them are available from the OpenEnergyMonitor shop.
 
-1x emonTx V3 pre-assembled
-1x 100A max clip-on current sensor CT
-1x AC-AC Power Supply Adapter - AC voltage sensor (Both UK and Euro plugs are available)
+    1x emonTx V3 pre-assembled
+    1x 100A max clip-on current sensor CT
+    1x AC-AC Power Supply Adapter - AC voltage sensor (Both UK and Euro plugs are available)
 
-1x Raspberry Pi (Model B) - Web-connected Base Station
-1x RFM12Pi - Raspberry Pi Base Station Receiver Board
-1x Blank SD Card
-1x (optional) RaspberryPi case, this one is nice: Pimoroni Berryblack Case
+    1x Raspberry Pi (Model B) - Web-connected Base Station
+    1x RFM12Pi - Raspberry Pi Base Station Receiver Board
+    1x Blank SD Card
+    1x (optional) RaspberryPi case, this one is nice: Pimoroni Berryblack Case
 
 Note: it's important that the frequency (868Mhz / 433Mhz) of the chosen modules match each other and is a legal ISM band in your country.
 
 You might also need:
 
-1x 5V DC USB Power Adapter (UK Plug)
-1x Micro-USB cable
-1x Ethernet cable
-
-1x USB to serial programmer
+    1x 5V DC USB Power Adapter (UK Plug)
+    1x Micro-USB cable
+    1x Ethernet cable
+    1x USB to serial programmer
 
 ## System setup
 

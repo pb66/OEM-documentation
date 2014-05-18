@@ -1,3 +1,3 @@
 ## Applications
 
-* Home Energy Monitor
+* [Home Energy Monitor](Applications/HomeEnergyMonitor/HomeEnergyMonitor.md)
