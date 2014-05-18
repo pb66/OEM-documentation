@@ -183,6 +183,8 @@ Navigate to the Node tab.
 
 Click on the name of the node that appeared, it should show a drop down menu. Select the node type: EmonTx V3 (Continuous sampling with Wh totals). This will turn the undefined node into a full populated node with a list of available variables.
 
+![System overview](files/nodes.jpg)
+
 Click on Config for:
 
 Power CT1: Select Log to feed, enter a name for the feed such as "Power CT1" or House Power or whatever, select the PHPFiwa feed engine and select the 10s feed interval (this is the same rate at which the EmonTx is posting)
@@ -203,7 +205,7 @@ click save
 
 Thats it you should now see your home electricity dashboard.
 
-Configuration                    After initial configuration               After a week of logging
+![System overview](files/emoncms_myelectric.jpg)
 
 Open the page on your mobile phone and bookmark it. When you click on the bookmark it will automatically log you in and bring up your electricity dashboard.
 
