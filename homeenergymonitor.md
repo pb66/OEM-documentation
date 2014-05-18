@@ -111,7 +111,7 @@ Set your radio frequency and network group in the listener config (use short han
 
 Set your emoncms.org apikey in the apikey section in the buffer.
 
-Next we make oem_gateway run as a deamon, steps from the oem_gateway readme.
+Next we make oem\_gateway run as a deamon, steps from the oem\_gateway readme.
 
 Create group emoncms and make user pi part of it
 
@@ -129,14 +129,14 @@ Make script run as daemon on startup
 Copy the oemgateway init script:
 
     sudo cp oemgateway.init.dist /etc/init.d/oemgateway
-sudo chmod 755 /etc/init.d/oemgateway
-sudo update-rc.d oemgateway defaults 99
+    sudo chmod 755 /etc/init.d/oemgateway
+    sudo update-rc.d oemgateway defaults 99
 
 The gateway can be started or stopped anytime with following commands:
-
-sudo service oemgateway start
-sudo service oemgateway stop
-sudo service oemgateway restart
+    
+    sudo service oemgateway start
+    sudo service oemgateway stop
+    sudo service oemgateway restart
 
 To stop running automatically on startup (sudo update-rc.d -f oemgateway remove)
 
@@ -152,24 +152,24 @@ a) sudo nano /etc/default/rcS, add line RAMTMP=yes
 
 b) sudo nano /etc/fstab
 
-tmpfs           /tmp            tmpfs   nodev,nosuid,size=30M,mode=1777    0    0
-tmpfs           /var/log        tmpfs   nodev,nosuid,size=30M,mode=1777    0    0
-proc            /proc           proc    defaults          0       0
-/dev/mmcblk0p1  /boot           vfat    defaults          0       2
-/dev/mmcblk0p2  /               ext4    defaults,ro,noatime,errors=remount-ro  0       1
-# /dev/mmcblk0p3  /home           ext4    defaults,noatime
+    tmpfs           /tmp            tmpfs   nodev,nosuid,size=30M,mode=1777    0    0
+    tmpfs           /var/log        tmpfs   nodev,nosuid,size=30M,mode=1777    0    0
+    proc            /proc           proc    defaults          0       0
+    /dev/mmcblk0p1  /boot           vfat    defaults          0       2
+    /dev/mmcblk0p2  /               ext4    defaults,ro,noatime,errors=remount-ro  0       1
+    # /dev/mmcblk0p3  /home           ext4    defaults,noatime
 
 c) fix mtab:
 
-sudo rm /etc/mtab
-sudo ln -s /proc/self/mounts /etc/mtab
+    sudo rm /etc/mtab
+    sudo ln -s /proc/self/mounts /etc/mtab
 
 Change mount mode:
 
-sudo mount -o remount,ro /dev/mmcblk0p2  /
-sudo mount -o remount,rw /dev/mmcblk0p2  /
+    sudo mount -o remount,ro /dev/mmcblk0p2  /
+    sudo mount -o remount,rw /dev/mmcblk0p2  /
 
-Setting up emoncms
+## Setting up emoncms
 
 Navigate to the Node tab.
 
@@ -195,10 +195,11 @@ click save
 
 Thats it you should now see your home electricity dashboard.
 
-                  Configuration                    After initial configuration               After a week of logging
+Configuration                    After initial configuration               After a week of logging
 
 Open the page on your mobile phone and bookmark it. When you click on the bookmark it will automatically log you in and bring up your electricity dashboard.
-Using the monitor
+
+## Using the monitor
 
 The appliance list tool is a useful exercise for answering questions such as how much electricity can be save by using low energy lighting such as LED's? How much electricity does turning off lighting when not in use save?
 Login to emoncms.org and then navigate to Extras > Report > Appliance list
