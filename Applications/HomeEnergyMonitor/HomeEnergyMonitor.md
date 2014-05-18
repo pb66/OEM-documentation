@@ -183,7 +183,7 @@ Navigate to the Node tab.
 
 Click on the name of the node that appeared, it should show a drop down menu. Select the node type: EmonTx V3 (Continuous sampling with Wh totals). This will turn the undefined node into a full populated node with a list of available variables.
 
-![System overview](files/nodes.jpg)
+![System overview](files/nodes.png)
 
 Click on Config for:
 
@@ -205,7 +205,7 @@ click save
 
 Thats it you should now see your home electricity dashboard.
 
-![System overview](files/emoncms_myelectric.jpg)
+![System overview](files/emoncms_myelectric.png)
 
 Open the page on your mobile phone and bookmark it. When you click on the bookmark it will automatically log you in and bring up your electricity dashboard.
 
