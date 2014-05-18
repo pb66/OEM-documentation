@@ -8,7 +8,7 @@ This guide details how to build a web-connected home electricity monitor using t
 
 ## System overview
 
-![System overview](files/system.jpg =800)
+![System overview](files/system.jpg)
 
 ## Parts list
 
