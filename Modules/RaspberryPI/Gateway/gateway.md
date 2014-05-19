@@ -73,7 +73,7 @@ Open the emonhub configuration file
     cp conf/emonhub-node-example.conf conf/emonhubNode.conf
     nano conf/emonhubNode.conf
 
-Set your radio frequency and network group in the listener config (use short hand 4 for 433Mhz and 8 for 868Mhz). Set your emoncms.org apikey in the apikey section in the buffer. Change log location..
+Set your radio frequency and network group in the listener config (use short hand 4 for 433Mhz and 8 for 868Mhz). Set your emoncms.org apikey in the apikey section in the buffer.
 
 Next we make emonhub run as a deamon:
 
@@ -143,12 +143,6 @@ Then run these commands to make changes to filesystem
     sudo mv /etc/mtab /etc/mtab.orig
     sudo ln -s /proc/self/mounts /etc/mtab
     
-Re-create /var/log/emonhub directory now on in-memory based partition
-
-    sudo mkdir /var/log/emonhub
-    sudo chown pi /var/log/emonhub
-    sudo chmod 750 /var/log/emonhub
-
 The Pi will now run in Read-Only mode from the next restart.
 
 Before restarting create two shortcut commands to switch between read-only and write access modes.
