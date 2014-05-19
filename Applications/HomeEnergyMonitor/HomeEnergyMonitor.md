@@ -65,7 +65,7 @@ The raspberrypi can be configured in many different ways, you can record data lo
 
 How to: setup a raspberrypi with a harddrive for local logging and visualisation
 
-How to: setup a raspberrypi with emonhub for posting data to multiple services including emoncms.org
+How to: setup a raspberrypi for posting data to multiple services including emoncms.org
 
 [How to: setup a raspberrypi gateway for sending data to emoncms.org (node only mode)](../../Modules/RaspberryPI/Gateway/gateway.md)
 
