@@ -64,10 +64,14 @@ Plug the RFM12Pi hardware expansion module onto the Pi's GPIO pins taking care t
 The raspberrypi can be configured in many different ways, you can record data locally onto a connected harddrive or you can forward data to a remove server such as emoncms.org.
 
 **How to: setup a raspberrypi with a harddrive for local logging and visualisation (recommended).**
+_Uses emonhub to link rfm12pi to local emoncms as well as having the ability to forward the data to multiple remote services_
 
-How to: setup a raspberrypi for posting data to multiple services including emoncms.org
+**How to: setup a raspberrypi for posting data to multiple services including emoncms.org (recommended gateway)**
+_Uses emonhub to read from rfm12pi and post data to multiple remote services. Weather a home server or/and emoncms.org or other_
 
-[How to: setup a raspberrypi gateway for sending data to emoncms.org (node only mode)](../../Modules/RaspberryPI/Gateway/gateway.md)
+**[How to: setup a raspberrypi gateway for sending data to emoncms.org (node only mode)](../../Modules/RaspberryPI/Gateway/gateway.md)**
+_Uses emonhub to forward data directly to emoncms.org without decoding on the raspberrypi_
+
 
 ## Setting up emoncms
 
