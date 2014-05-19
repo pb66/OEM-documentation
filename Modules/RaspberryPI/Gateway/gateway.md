@@ -1,6 +1,8 @@
-## How to setup a raspberry PI based gateway
+## How to setup a raspberry PI based gateway (node interface)
 
-This guide details how to setup a raspberry pi based gateway that receives data from wireless sensor nodes using the rfm12pi adapter board and then forwards that data on to a remote emoncms server for logging and visualisation.
+This guide details how to setup a raspberry pi based gateway that receives data from wireless sensor nodes using the rfm12pi adapter board and then forwards that data on to a remote emoncms server for logging and visualisation. 
+
+**Note:** The particular approach documented here is a restricted mode as it uses the remote server to decode the node data. This does not make full use of the raspberry pi and emonhub's capabilities such as forwarding data to multiple services but may be simpler in some circumstances. See main menu for all options.
 
 This guide covers the software that is needed on the raspberrypi SD card to make this work.
 
