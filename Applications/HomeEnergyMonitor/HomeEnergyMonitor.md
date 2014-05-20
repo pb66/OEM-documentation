@@ -72,6 +72,8 @@ _Uses emonhub to read from rfm12pi and post data to multiple remote services. We
 **[How to: setup a raspberrypi gateway for sending data to emoncms.org (node only mode)](../../Modules/RaspberryPI/Gateway/gateway.md)**
 _Uses emonhub to forward data directly to emoncms.org without decoding on the raspberrypi_
 
+Ready to go image:
+[http://217.9.195.228/2014-05-19-emonhub-gateway.img.zip](http://217.9.195.228/2014-05-19-emonhub-gateway.img.zip)
 
 ## Setting up emoncms
 
