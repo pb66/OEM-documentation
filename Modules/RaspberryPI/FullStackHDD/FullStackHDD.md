@@ -56,7 +56,11 @@ Update the rasbian repositories with:
 
 Install all dependencies:
 
-    sudo apt-get install apache2 mysql-server mysql-client php5 libapache2-mod-php5 php5-mysql php5-curl php-pear php5-dev php5-mcrypt git-core redis-server build-essential ufw ntp python-serial python-configobj mosquitto
+    sudo apt-get install apache2 mysql-server mysql-client php5 libapache2-mod-php5 php5-mysql php5-curl php-pear php5-dev php5-mcrypt git-core redis-server build-essential ufw ntp python-serial python-configobj mosquitto mosquitto-clients python-mosquitto python-pip python-dev
+
+Install python pip dependencies
+
+    sudo pip install tendo
 
 Install pecl dependencies (redis and swift mailer)
 
@@ -166,7 +170,7 @@ Cd into www directory
 
 Download emoncms using git:
 
-    $ git clone -b MQTT https://github.com/emoncms/emoncms.git
+    $ git clone -b mqtt https://github.com/emoncms/emoncms.git
     
 Once installed you can pull in updates with:
 
@@ -221,7 +225,7 @@ Save (Ctrl-X), type Y and exit
 ### Install packetgen
 
     cd /var/www/emoncms/Modules
-    git clone -b MQTT https://github.com/emoncms/packetgen.git
+    git clone -b mqtt https://github.com/emoncms/packetgen.git
 
 ### Create an account in emoncms and login
 This will automatically create the database
