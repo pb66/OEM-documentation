@@ -56,7 +56,7 @@ Update the rasbian repositories with:
 
 Install all dependencies:
 
-    sudo apt-get install apache2 mysql-server mysql-client php5 libapache2-mod-php5 php5-mysql php5-curl php-pear php5-dev php5-mcrypt git-core redis-server build-essential ufw ntp python-serial python-configobj
+    sudo apt-get install apache2 mysql-server mysql-client php5 libapache2-mod-php5 php5-mysql php5-curl php-pear php5-dev php5-mcrypt git-core redis-server build-essential ufw ntp python-serial python-configobj mosquitto
 
 Install pecl dependencies (redis and swift mailer)
 
@@ -143,6 +143,10 @@ Redis settings: change save to: save 900 1 only
 Comment the access log to other-vhosts (add #)
 
     sudo nano /etc/apache2/conf.d/other-vhosts-access-log
+    
+### Reboot the pi
+
+    sudo reboot
 
 ### Install the emoncms application via git
 
@@ -214,17 +218,33 @@ Enter in your database settings.
 
 Save (Ctrl-X), type Y and exit
 
-### Install add-on emoncms modules
+### Install packetgen
 
     cd /var/www/emoncms/Modules
     git clone -b MQTT https://github.com/emoncms/packetgen.git
+
+### Create an account in emoncms and login
+This will automatically create the database
+
+### Test run the serial listener and node processor processes.
+
+Login to your pi twice to create two terminal windows.
+
+Locate the emoncms run folder:
+
+    cd /var/www/emoncms/run
+
+Configure your radio settings and target user in jeelistener.conf
+The target user will probably be 1 if its the first account you created in emoncms.
+To get the emoncms user id type http://localhost/emoncms/user/get.json
     
-Edit inittab to allow raspberrypi module access to the serial port.
+In the first terminal window run jeelistener.py
 
-    $ sudo nano /etc/inittab 
+    python jeelistener.py
+    
+In the second terminal window run nodeprocessor.php
 
-At the bottom of the file comment out the line (by adding a '#' at begining)
+    sudo php nodeprocessor.php
 
-    # T0:23:respawn:/sbin/getty -L ttyAMA0 115200 vt100
+With both of these scripts running data should now start to appear in the emoncms node interface and when you change the packet state in packetgen you should see rf packets being send immedietly from the rfm12pi.
 
-[Ctrl+X] then [y] then [Enter] to save and exit
