@@ -2,10 +2,9 @@
 
 This guide details how to setup a raspberry pi basestation with local data logging and visualisation accessible in the same way as you would access your home router on your local LAN.
 
-** NOTE: THIS IS CONCEPT DOCUMENTATION TO EXPLORE NEW MQTT ENABLED EMONCMS INSTALLATION AS IS BEING DISCUSSED HERE [https://github.com/emonhub/emonhub/issues/29](https://github.com/emonhub/emonhub/issues/29)**
+**NOTE: THIS IS CONCEPT DOCUMENTATION TO EXPLORE NEW MQTT ENABLED EMONCMS INSTALLATION AS IS BEING DISCUSSED HERE [https://github.com/emonhub/emonhub/issues/29](https://github.com/emonhub/emonhub/issues/29). It makes use of the MQTT development branch of emoncms and packetgen.**
 
-It makes use of the MQTT development branch of emoncms and packetgen.
-
+![systemdesign21May14.jpg](files/systemdesign21May14.jpg)
 
 Start by downloading the official raspberrpi raspbian image
 
