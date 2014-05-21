@@ -63,7 +63,8 @@ Plug the RFM12Pi hardware expansion module onto the Pi's GPIO pins taking care t
 
 ## Setting up the RaspberryPI with a harddrive for local logging and visualisation
 
-
+**[How to: setup a raspberrypi with a harddrive for local logging and visualisation](../../Modules/RaspberryPI/FullStackHDD/FullStackHDD.md)**
+_Uses emonhub to link rfm12pi to local emoncms as well as having the ability to forward the data to multiple remote services_
 
 ## Setting up emoncms
 
