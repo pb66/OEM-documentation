@@ -113,7 +113,17 @@ Edit the _inittab_ file to allow the python serial listener to use the serial po
 At the bottom of the file comment out the line, by adding a ‘#’ at beginning:
 
     # T0:23:respawn:/sbin/getty -L ttyAMA0 115200 vt100
+    
+Install Logger
 
+    sudo pear channel-discover pear.apache.org/log4php
+    sudo pear install log4php/Apache_log4php
+
+ensure that log file has write permissions for www-data, pi and root.
+
+    cd
+    > emoncms.log
+    sudo chmod 660 /home/pi/emoncms.log 
 
 ### Security
 
