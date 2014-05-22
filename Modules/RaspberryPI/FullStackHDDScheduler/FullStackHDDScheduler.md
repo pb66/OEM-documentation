@@ -334,9 +334,9 @@ Running the scripts via cron in this way will guarantee that the script restarts
 
 add the following lines:
 
-    * * * * * python /var/www/emoncms/run/jeelistener.py > /home/pi/jeelistener.log 2>&1
-    * * * * * php /var/www/emoncms/run/nodeprocessor.php > /home/pi/nodeprocessor.log 2>&1
-    * * * * * php /var/www/emoncms/Modules/scheduler/scheduler_run.php > /home/pi/scheduler.log 2>&1
+    * * * * * python /var/www/emoncms/run/jeelistener.py 2>&1
+    * * * * * php /var/www/emoncms/run/nodeprocessor.php 2>&1
+    * * * * * php /var/www/emoncms/Modules/scheduler/scheduler_run.php 2>&1
     
 To stop these scripts, remove the entries from cron and kill the processes manually.
 
