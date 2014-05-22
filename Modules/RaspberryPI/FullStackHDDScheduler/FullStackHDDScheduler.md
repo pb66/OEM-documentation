@@ -6,7 +6,7 @@ The heating scheduler module makes it possible to control heating schedules in s
 
 The following diagram gives an overview of the main software components involved in the application:
 
-![systemdesignscheduler200514.png](systemdesignscheduler200514.png)
+![systemdesignscheduler200514.png](files/systemdesignscheduler200514.png)
 
 Start by downloading the official raspberrpi raspbian image
 
