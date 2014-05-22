@@ -66,6 +66,7 @@ Install pecl dependencies (redis and swift mailer)
 
     sudo pear channel-discover pear.swiftmailer.org
     sudo pecl install redis swift/swift
+    pecl install -B SAM
     
 Add pecl modules to php5 config
 
