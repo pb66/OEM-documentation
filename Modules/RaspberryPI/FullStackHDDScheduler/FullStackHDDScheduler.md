@@ -1,10 +1,29 @@
 ## How to setup a full stack emoncms raspberry PI + HDD basestation + scheduler
 
+This guide details how to install emoncms and the heating scheduler module on a rfm12pi + raspberrypi + HDD hardware setup.
+
+The heating scheduler module makes it possible to control heating schedules in several zones in a building, its a module that is in the early stages of development.
+
+The following diagram gives an overview of the main software components involved in the application:
+
+![systemdesignscheduler200514.png](systemdesignscheduler200514.png)
+
 Start by downloading the official raspberrpi raspbian image
 
     [http://www.raspberrypi.org/downloads](http://www.raspberrypi.org/downloads)
     
-Upload the image to both the harddrive and the SD Card. On Linux dd can be used for this but care needs to be taken to ensure you select the correct target device so as not to loose data.
+Upload the image to both the harddrive and the SD Card. On Linux dd can be used for this but care needs to be taken to ensure you select the correct target device so as not to loose data
+
+To check the mount location of the SD card or harddrive use:
+
+    df -h
+    
+Unmount any mounted SD card partitions
+    
+    umount /dev/sdb1
+    umount /dev/sdb2
+    
+Write the raspbian image to the SD card (Make sure of=/dev/sdb is the correct location)
     
     sudo dd bs=4M if=2014-01-07-wheezy-raspbian.img of=/dev/sdb
     
@@ -15,6 +34,14 @@ Upload the image to both the harddrive and the SD Card. On Linux dd can be used 
 Mount the SD Card on your computer and open the boot partition. Open to edit the file:
 
     /boot/cmdline.txt
+    
+**Tip** a useful tool for opening a terminal window in a particular linux folder is nautilus-open-terminal
+
+    sudo apt-get install nautilus-open-terminal
+    
+You will need to logout and log back in to your computer and then right click in the folder and click on open in terminal.
+    
+You may need to use sudo to open the file.
 
 Over write with:
 
