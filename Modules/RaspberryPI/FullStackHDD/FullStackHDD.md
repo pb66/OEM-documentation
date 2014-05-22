@@ -56,11 +56,12 @@ Update the rasbian repositories with:
 
 Install all dependencies:
 
-    sudo apt-get install apache2 mysql-server mysql-client php5 libapache2-mod-php5 php5-mysql php5-curl php-pear php5-dev php5-mcrypt git-core redis-server build-essential ufw ntp python-serial python-configobj mosquitto mosquitto-clients python-mosquitto python-pip python-dev
+    sudo apt-get install apache2 mysql-server mysql-client php5 libapache2-mod-php5 php5-mysql php5-curl php-pear php5-dev php5-mcrypt git-core redis-server build-essential ufw ntp python-serial python-configobj mosquitto mosquitto-clients python-pip python-dev
 
 Install python pip dependencies
 
     sudo pip install tendo
+    sudo pip install mosquitto
 
 Install pecl dependencies (redis and swift mailer)
 
