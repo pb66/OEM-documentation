@@ -1,5 +1,7 @@
 ## Applications
 
+Open, downloadable, editable documentation (via git).
+
 **Home Energy Monitor**
 
 * [Home Energy Monitor (posting to emoncms.org)](Applications/HomeEnergyMonitor/HomeEnergyMonitor.md)
