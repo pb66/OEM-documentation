@@ -61,3 +61,15 @@ _Uses emonhub to link rfm12pi to local emoncms as well as having the ability to 
 
 ## Using the heatpump monitor
 
+The best place to start with making use of your heatpump monitor is to understand exactly how a heatpump works, when it is most efficient, so that you can compare a theoretical understanding with the data being generated from your heatpump monitor.
+
+John Cantor's book on heatpumps has several useful chapters on a heatpump's operation that I (Trystan) would highly recommend, here's his website: [http://heatpumps.co.uk/](http://heatpumps.co.uk/)
+
+We're currently working on tools that model a heatpumps operation theoretically, making it possible to explore how different heating profiles and external and internal conditions affect its operation:
+
+Theory: [Heatpump model](http://openenergymonitor.org/emon/node/3021)
+
+Web App: [http://www.emoncms.org/openbem/heatpumpexplorer](http://www.emoncms.org/openbem/heatpumpexplorer)
+
+If you build a heatpump monitor and can add your experience to this documentation please get in contact on the forums.
+
