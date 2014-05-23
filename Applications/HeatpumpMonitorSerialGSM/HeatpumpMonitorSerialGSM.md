@@ -74,7 +74,7 @@ _For debugging: typing the command lsusb is useful, the Huawei Technologies entr
 
 ## Further development
 
-- Allow for segmented upload of buffered data so that the raspberrypi doesn't try to post too much data at once overloading the server, data should also be transferred in the body of the request rather than the url. - feature currently in testing
+- Allow for segmented upload of buffered data so that the raspberrypi doesn't try to post too much data at once overloading the server, data should also be transferred in the body of the request rather than the url.
 
 - Check and test different mobile networks. Is it possible to get an unlocked version of the Huawei e3231 that a SIM card for each network can be inserted into so that the best network can be chosen for any particular site.
 
