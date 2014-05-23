@@ -80,21 +80,23 @@ _For debugging: typing the command lsusb is useful, the Huawei Technologies entr
 
 - Work out the typical data use for a day's logging, is it within a £10/month contract.
 
-    20:09 17th March 2014
+- Create a raspberrypi SD card image that has the GSM configuration ready to go.
+
+## Initial data use tests
+
+    **20:09 17th March 2014**
     Download  24.06 KB  2.66 MB
     Upload  16.51 KB  2.35 MB
     Total  40.56 KB  5.02 MB
     Duration  00:03:57  23:06:22
     
-    10:23 18th March 2014
+    **10:23 18th March 2014**
     Download  5.87 KB  4.78 MB
     Upload  3.69 KB  5.31 MB
     Total  9.56 KB  10.09 MB
     Duration  00:00:24  37:16:58
     
-    14h 15mins
+    **14h 15mins**
     dn 2.12 0.15 mb/h 108mb/month
     up 2.96 0.21 mb/h 151.2mb/month
-
-- Create a raspberrypi SD card image that has the GSM configuration ready to go.
 
