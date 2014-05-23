@@ -3,6 +3,8 @@
 * [Home Energy Monitor (posting to emoncms.org)](Applications/HomeEnergyMonitor/HomeEnergyMonitor.md)
 * [Home Energy Monitor (with emoncms running locally on a harddrive)](Applications/HomeEnergyMonitorHDD/HomeEnergyMonitorHDD.md)
 * [Heatpump Monitor (with emoncms running locally on a harddrive)](Applications/HeatpumpMonitorHDD/HeatpumpMonitorHDD.md)
+* [Heatpump Monitor (direct serial emontx -> RPi + GSM](Applications/HeatpumpMonitorSerialGSM/HeatpumpMonitorSerialGSM.md)
+
 
 ## Modules
 
