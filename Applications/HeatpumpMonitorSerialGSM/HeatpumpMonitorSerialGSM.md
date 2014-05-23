@@ -72,6 +72,20 @@ Complete the setup by rebooting the pi:
 
 _For debugging: typing the command lsusb is useful, the Huawei Technologies entry should be in mode: 12d1:14db not 12d1:1f01_
 
+## Using the heatpump monitor
+
+The best place to start with making use of your heatpump monitor is to understand exactly how a heatpump works, when it is most efficient, so that you can compare a theoretical understanding with the data being generated from your heatpump monitor.
+
+John Cantor's book on heatpumps has several useful chapters on a heatpump's operation that I (Trystan) would highly recommend, here's his website: [http://heatpumps.co.uk/](http://heatpumps.co.uk/)
+
+We're currently working on tools that model a heatpumps operation theoretically, making it possible to explore how different heating profiles and external and internal conditions affect its operation:
+
+Theory: [Heatpump model](http://openenergymonitor.org/emon/node/3021)
+
+Web App: [http://www.emoncms.org/openbem/heatpumpexplorer](http://www.emoncms.org/openbem/heatpumpexplorer)
+
+If you build a heatpump monitor and can add your experience to this documentation please get in contact on the forums.
+
 ## Further development
 
 - Allow for segmented upload of buffered data so that the raspberrypi doesn't try to post too much data at once overloading the server, data should also be transferred in the body of the request rather than the url.
@@ -99,4 +113,3 @@ _For debugging: typing the command lsusb is useful, the Huawei Technologies entr
     **14h 15mins**
     dn 2.12 0.15 mb/h 108mb/month
     up 2.96 0.21 mb/h 151.2mb/month
-
