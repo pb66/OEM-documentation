@@ -4,12 +4,12 @@
 
 The following guide documents how to build a heatpump monitoring system with:
 
-    4x DS18B20 Temperature sensors
-    3x CT current sensors
-    1x AC Voltage measurement for real power and powerfactor measurement.
-    [A direct wired serial connection between the emontx and the raspberrypi](http://openenergymonitor.org/emon/node/3884)
-    Buffering of data on the Raspberry PI if the internet connection goes down.
-    Support of GSM connectivity using Huawei e3231 usb dongle
+- 4x DS18B20 Temperature sensors
+- 3x CT current sensors
+- 1x AC Voltage measurement for real power and powerfactor measurement.
+- [A direct wired serial connection between the emontx and the raspberrypi](http://openenergymonitor.org/emon/node/3884)
+- Buffering of data on the Raspberry PI if the internet connection goes down.
+- Support of GSM connectivity using Huawei e3231 usb dongle
 
 ## Setting up the system
 
@@ -22,6 +22,8 @@ Upload the following heatpump specific application firmware using a USB to UART 
 ### 2) Connect the EmonTx to the raspberryPI
 
 This can be done by using 3 jumper wires as documented here: [Connect an EmonTx v3 to RaspberryPI via serial](http://openenergymonitor.org/emon/node/3884)
+
+![direct serial connection](files/emontx_to_pi_serial.JPG)
 
 ### 3) Setting up the Raspberrypi
 
@@ -79,23 +81,20 @@ _For debugging: typing the command lsusb is useful, the Huawei Technologies entr
 - Work out the typical data use for a day's logging, is it within a £10/month contract.
 
     20:09 17th March 2014
-    ------------------------------
     Download  24.06 KB  2.66 MB
     Upload  16.51 KB  2.35 MB
     Total  40.56 KB  5.02 MB
     Duration  00:03:57  23:06:22
-
+    
     10:23 18th March 2014
-    -------------------------------
     Download  5.87 KB  4.78 MB
     Upload  3.69 KB  5.31 MB
     Total  9.56 KB  10.09 MB
     Duration  00:00:24  37:16:58
-
+    
     14h 15mins
     dn 2.12 0.15 mb/h 108mb/month
     up 2.96 0.21 mb/h 151.2mb/month
-    --------------------------------
 
 - Create a raspberrypi SD card image that has the GSM configuration ready to go.
 
