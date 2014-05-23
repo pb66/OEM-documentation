@@ -8,11 +8,11 @@ This guide details how to build a heatpump monitor with local data logging and v
 
 ![System overview](files/system.jpg)
 
-### Measurement
+**Measurement**
 
-Temperature measurements are performed with one-wire DS18B20 digital temperature sensors, which are small thermometers with built in 12bit ADC's and microcontroller. The sensor communicates over a one-wire bus via the one-wire serial protocol and requires little in the way of additional components. The sensors have an accuracy of +/-0.5 deg C in the range -10 deg C to +85 deg C. [Building blocks: DS18B20 Temperature sensing]
+Temperature measurements are performed with one-wire DS18B20 digital temperature sensors, which are small thermometers with built in 12bit ADC's and microcontroller. The sensor communicates over a one-wire bus via the one-wire serial protocol and requires little in the way of additional components. The sensors have an accuracy of +/-0.5 deg C in the range -10 deg C to +85 deg C. [Building blocks: DS18B20 Temperature sensing](http://openenergymonitor.org/emon/buildingblocks/DS18B20-temperature-sensing)
 
-Power measurement is performed with a clip-on current transformer (CT) which measures AC current and a plug in AC to AC power adapter which measures AC voltage. AC power is then calculated onboard the emontx. See the AC power theory section of the building blocks documentation for more detail [building blocks]
+Power measurement is performed with a clip-on current transformer (CT) which measures AC current and a plug in AC to AC power adapter which measures AC voltage. AC power is then calculated onboard the emontx. See the AC power theory section of the building blocks documentation for more detail [building blocks](http://openenergymonitor.org/emon/buildingblocks)
 
 The rate at which power and temperature measurements are taken can be set in the emontx firmware, but is usually around 10s per set of measurements.
 
