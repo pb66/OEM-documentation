@@ -38,7 +38,7 @@ The OpenEnergyMonitor hardware listed above all come pre-assembled, no soldering
 
 Changing the EmonTx firmware
 
-1. Start by following the: setting up the arduino anvironment guide
+1. Start by following the: setting up the arduino environment guide
 
 2. Click on File > sketchbook > OpenEnergyMonitor > emonTxFirmware > emonTxV3 > 
 RFM12B > Examples > emonTxV3_continuous_kwhtotals_noeeprom. This will load the 
