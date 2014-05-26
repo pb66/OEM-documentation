@@ -38,24 +38,24 @@ The OpenEnergyMonitor hardware listed above all come pre-assembled, no soldering
 
 Changing the EmonTx firmware
 
-1. Start by following the: setting up the arduino environment guide
+1. Start by following the: [setting up the arduino environment guide](http://openenergymonitor.org/emon/buildingblocks/setting-up-the-arduino-environment)
 
 2. Click on File > sketchbook > OpenEnergyMonitor > emonTxFirmware > emonTxV3 > 
 RFM12B > Examples > emonTxV3_continuous_kwhtotals_noeeprom. This will load the 
 firmware example that both uses the higher accuracy continuous sampling code by 
 Robin Emley and the watt hour calculation code mentioned above.
 
-3. Set the frequency of your emontx at the top of the sketch/firmware and nodeid 
+3. Set the frequency of your emontx at the top of the sketch/firmware and node ID 
 if you wish to change it. Plug up your emonTx v3 with a usb to serial programmer 
 and click on Upload.
 
 **Continuing with the hardware installation:**
 
-Place or mount your emontx near your meter cabinet, the emonTx V3 comes with wall mounts as can be seen in the example installation above.
+Place or wall-mount your emontx near your meter cabinet
 
 Plug in the CT sensor into the emonTx first before clipping it around the mains wire and before powering-up the emonTx. Clip the sensor around either the live or neutral wire of the circuit you wish to measure. (Don't clip around both as the magnetic fields will cancel).
 
-Plug in the AC-AC Voltage adapter this both power's the emonTx and is used for sampling the AC mains voltage. A red light should now appear near the AC-AC adapter input and start flashing once every 10 seconds. Thats the emonTx set up! The emonTx can also be powered by batteries or from DC power source. See the emonTx technical wiki for info on using alternate power sources and interoperating the red LED behaviour
+Plug in the AC-AC Voltage adapter this both power's the emonTx and is used for sampling the AC mains voltage. A red light should now appear near the AC-AC adapter input and start flashing once every 10 seconds. Thats the emonTx set up! The emonTx can also be powered by batteries or from DC power source. See the emonTx [technical wiki](http://wiki.openenergymonitor.org/index.php?title=EmonTx_V3) for info on using alternate power sources and interporating the red LED behaviour
 
 Plug the RFM12Pi hardware expansion module onto the Pi's GPIO pins taking care to align up pin 1, the RFM12Pi should be connected to the GPIO pins connector closest to the edge of the pi.
 
@@ -64,8 +64,8 @@ Plug the RFM12Pi hardware expansion module onto the Pi's GPIO pins taking care t
 **[How to: setup a raspberrypi gateway for sending data to emoncms.org (node only mode)](../../Modules/RaspberryPI/Gateway/gateway.md)**
 _Uses emonhub to forward data directly to emoncms.org without decoding on the raspberrypi_
 
-Ready to go image:
-[http://217.9.195.228/2014-05-19-emonhub-gateway.img.zip](http://217.9.195.228/2014-05-19-emonhub-gateway.img.zip)
+Ready to go image download:
+[2014-05-19-emonhub-gateway.img.zip](http://files.openenergymonitor.org/2014-05-19-emonhub-gateway.img.zip)
 
 ## Setting up emoncms
 
