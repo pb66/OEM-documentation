@@ -67,6 +67,20 @@ _Uses emonhub to forward data directly to emoncms.org without decoding on the ra
 Ready to go image download:
 [2014-05-19-emonhub-gateway.img.zip](http://files.openenergymonitor.org/2014-05-19-emonhub-gateway.img.zip)
 
+If you use the ready to go image you may want to start by updating emonhub, ssh into the raspberrypi:
+
+    rpi-rw
+    cd emonhub
+    git pull
+    cp conf/emonhub-node-example.conf /boot/emonhub.node-example.conf
+    
+To use emonhub in basic 'node' mode which just forwards the data to emoncms.org (or other remote emoncms server) copy the emonhub.node-example.conf configuration file and rename to emonhub.conf.
+Open emonhub.conf to edit and set the radio group and frequency and then the remote server url and apikey to match your emoncms account.
+
+Complete by restarting emonhub
+
+    sudo service emonhub restart 
+
 ## Setting up emoncms
 
 Navigate to the Node tab.
