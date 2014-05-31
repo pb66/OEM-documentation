@@ -1,5 +1,7 @@
 ## How to build an Energy Monitoring Android App
 
+![AndroidAppPart1](files/OnPhone.JPG)
+
 1) Start by installing Eclipse with Android SDK
 
 [https://developer.android.com/sdk/installing/installing-adt.html](https://developer.android.com/sdk/installing/installing-adt.html)
@@ -331,21 +333,55 @@ We can simply add these to our MainActivity class with the start and stop repeat
 
 Delete startRepeatingTask(); from onCreate.
 
+### 5) Larger text and a smaller label
 
+To change and add to the app layout you can either use the built in eclipse android layout editor or change the underlying xml directly. 
 
+![LayoutView.png](files/LayoutView.png)
 
+Change activity_main.xml to:
 
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        tools:context=".MainActivity" >
 
+        <TextView
+            android:id="@+id/power_heading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/power_heading"
+            android:textColor="#000"
+            android:textSize="28sp" />
 
+        <TextView
+            android:id="@+id/powervalue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/power_heading"
+            android:layout_below="@+id/power_heading"
+            android:text="@string/power_value"
+            android:textColor="#000"
+            android:textSize="82sp"
+            android:textStyle="bold" />
 
+    </RelativeLayout>
 
+Change strings.xml to:
 
+    <?xml version="1.0" encoding="utf-8"?>
+    <resources>
 
+        <string name="app_name">HelloWorld</string>
+        <string name="action_settings">Settings</string>
+        <string name="power_heading">My Electric:</string>
+        <string name="power_value">----W</string>
 
+    </resources>
 
-
-
-
-
-
-
+### Further development >>
