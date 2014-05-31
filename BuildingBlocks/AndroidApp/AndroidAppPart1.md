@@ -308,8 +308,8 @@ http://eagle.phys.utk.edu/guidry/android/applicationLifecycles.html
 
 We've used the Activity method onCreate() so far but there are also other methods that might be very useful:
 
-onPause() - The activity is no longer visible
-onResume() - User returns to the activity
+- onPause() - The activity is no longer visible
+- onResume() - User returns to the activity
 
 We can simply add these to our MainActivity class with the start and stop repeating task method calls:
 
