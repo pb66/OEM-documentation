@@ -38,25 +38,6 @@ If you try and run the first example in the onCreate method of your android app:
 		Log.i("EmonLog", "Error: "+e);
 	}
 
-
-	Tip:
-	
-	A useful tool while developing is to make use of logging as a way of providing feedback on what's happening in your app by outputing where in the app its got to and variable values in the console.
-	
-	To log an info message type:
-	
-	    Log.i("Tag","Message");
-	
-	A useful way of filtering your log's is to set the tag to something like 'MyAppLog'
-	
-	    Log.i("MyAppLog","Starting App");
-	
-	Click on LogCat below the eclipse source code editor when the android app is running, enter the filter
-	
-	    tag:MyAppLog
-	    
-	This will only show your logs.
-
 It will then upload to the virtual device ok but fail with the error NetworkOnMainThreadExeption. Reading up on this error tells us that Android does not allow Network IO to happen in the Main Thread, we need to run it in its own Thread and a common way to do this is with AsyncTask.
 
 A basic AsyncTask class defenition looks like this:
@@ -139,6 +120,24 @@ Then in the MainActivity class execute the HTTP AsyncTask class like this:
 	    
 **Run and look at the result of LogCat**
 If you now run this on your virtual android device and look at the result in the eclipse LogCat (below the source code editor) you should see that it makes a successful request to the emoncms.org server and returns a feed value.
+
+**Tip: Logging**
+
+A useful tool while developing is to make use of logging as a way of providing feedback on what's happening in your app by outputing where in the app its got to and variable values in the console.
+
+To log an info message type:
+
+    Log.i("Tag","Message");
+
+A useful way of filtering your log's is to set the tag to something like 'MyAppLog'
+
+    Log.i("MyAppLog","Starting App");
+
+Click on LogCat below the eclipse source code editor when the android app is running, enter the filter
+
+    tag:MyAppLog
+    
+This will only show your logs.
 
 ### 2) Updating the display
 
