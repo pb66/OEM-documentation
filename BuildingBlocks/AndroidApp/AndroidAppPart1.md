@@ -383,5 +383,15 @@ Change strings.xml to:
         <string name="power_value">----W</string>
 
     </resources>
+    
+### Download full project up to this point:
 
-### Further development >>
+[https://github.com/emoncms/AndroidAppDev/tree/master/HelloWorld](https://github.com/emoncms/AndroidAppDev/tree/master/HelloWorld)
+
+### Further development
+
+- Replicate MyElectric emoncms module interface
+- Emoncms login authentication interface
+- Widget
+- Notification receiver
+
