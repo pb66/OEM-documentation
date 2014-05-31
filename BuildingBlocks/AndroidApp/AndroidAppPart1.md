@@ -37,11 +37,11 @@ Searching for Android http request it seems the recommended way of making http r
 	    urlConnection.disconnect();
     }
     
-Add to AndroidManifest.XML: 
+Before we go any further we need to add android.permission.INTERNET to the projects AndroidManifest.XML file to give the app permisions to use the internet. Add the following line to AndroidManifest.XML just before the <application section
 
     <uses-permission android:name="android.permission.INTERNET"/>
 			
-If you try and run the first example in the onCreate method of your android app: The first thing you will notice is that there's a red cross in the left-hand margin and much of the code is underlined in red. Clicking on the red cross gives the option to Import 'URL' choose this, this will automatically add the URL dependency to the project (at the top). Once you've added all the dependencies it will then ask you surround the code in a try/catch: 
+If you try and run the first HttpURLConnection example in the onCreate method of the android app: The first thing you will notice is that there's a red cross in the left-hand margin and much of the code is underlined in red. Clicking on the red cross gives the option to Import 'URL' choose this, this will automatically add the URL dependency to the project (at the top). Once you've added all the dependencies it will then ask you surround the code in a try/catch: 
 
 	try {
 		URL url = new URL("http://www.android.com/");
