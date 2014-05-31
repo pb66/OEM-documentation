@@ -6,7 +6,7 @@
 
 3. Click Run, in adroid device chooser select 'Launch a new Android Virtual Device' then 'Manager' > 'New'. Give your virtual android a name and select a screen that's similar to your phone. Select your newly created virtual device and click Start to launch. Go back to the Android Device Chooser and select the newly appeared emulator. Click Ok, in a few moments your HelloWorld app will appear.
 
-## Fetching a feed value
+### 1) Fetching a feed value
 
 As a first step it would be nice to get the current value of an emoncms feed and display it next to our hello world message
 
@@ -38,23 +38,24 @@ If you try and run the first example in the onCreate method of your android app:
 		Log.i("EmonLog", "Error: "+e);
 	}
 
-Tip:
 
-A useful tool while developing is to make use of logging as a way of providing feedback on what's happening in your app by outputing where in the app its got to and variable values in the console.
-
-To log an info message type:
-
-    Log.i("Tag","Message");
-
-A useful way of filtering your log's is to set the tag to something like 'MyAppLog'
-
-    Log.i("MyAppLog","Starting App");
-
-Click on LogCat below the eclipse source code editor when the android app is running, enter the filter
-
-    tag:MyAppLog
-    
-This will only show your logs.
+	Tip:
+	
+	A useful tool while developing is to make use of logging as a way of providing feedback on what's happening in your app by outputing where in the app its got to and variable values in the console.
+	
+	To log an info message type:
+	
+	    Log.i("Tag","Message");
+	
+	A useful way of filtering your log's is to set the tag to something like 'MyAppLog'
+	
+	    Log.i("MyAppLog","Starting App");
+	
+	Click on LogCat below the eclipse source code editor when the android app is running, enter the filter
+	
+	    tag:MyAppLog
+	    
+	This will only show your logs.
 
 It will then upload to the virtual device ok but fail with the error NetworkOnMainThreadExeption. Reading up on this error tells us that Android does not allow Network IO to happen in the Main Thread, we need to run it in its own Thread and a common way to do this is with AsyncTask.
 
@@ -139,7 +140,7 @@ Then in the MainActivity class execute the HTTP AsyncTask class like this:
 **Run and look at the result of LogCat**
 If you now run this on your virtual android device and look at the result in the eclipse LogCat (below the source code editor) you should see that it makes a successful request to the emoncms.org server and returns a feed value.
 
-### Updating the display
+### 2) Updating the display
 
 To update the text in the display the first step is to give the TextView field an id so that we can access it from the code space.
 
@@ -179,7 +180,7 @@ The on create method should now look like this:
 **Run**
 The Android virtual device display should now get the latest feed value and display it on the screen.
 
-### Periodic updating, get the latest feed value every 10 seconds.
+### 3) Periodic updating, get the latest feed value every 10 seconds.
 
 Searching for android periodic task I came across this example that uses Handler and Runnable on stackoverflow: http://stackoverflow.com/questions/6242268/repeat-a-task-with-a-time-delay/6242292#6242292
 
@@ -278,7 +279,7 @@ Merging this with the MainActivity class and moving the HTTP request to within t
 **Run**
 The Android virtual device display should now get the latest feed value and display it on the screen, the value will now update periodically.
 
-### Only get updates when the app is active
+### 4) Only get updates when the app is active
 
 At the moment if you navigate to android home screen the app keeps polling the server in the background which will eat up network bandwidth and battery life. While a more advanced app in the future might make background updates, especially if we have a widget on the home screen for now lets look at how to turn those updates off completely if the app is not in the foreground.
 
