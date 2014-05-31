@@ -16,6 +16,13 @@
 
 ![HelloWorld App](files/Emulator.png)
 
+**Uploading the app to your phone**
+Turn on developer mode:
+Click on Settings > About Phone, click 7 times on build number at the bottom to unlock developer mode.
+Enable USB Debugging.
+Connect your phone to your computer with a USB cable 
+The phone should now appear in the targets list when you click on run in eclipse.
+
 ### 1) Fetching a feed value
 
 As a first step it would be nice to get the current value of an emoncms feed and display it next to our hello world message
@@ -319,16 +326,6 @@ We can simply add these to our MainActivity class with the start and stop repeat
 	}
 
 Delete startRepeatingTask(); from onCreate.
-
-### Uploading the app to your phone
-
-Turn on developer mode:
-
-Click on Settings > About Phone, click 7 times on build number at the bottom to unlock developer mode.
-Enable USB DEbugging.
-Connect your phone to your computer with a USB cable 
-The phone should now appear in the targets list when you click on run in eclipse.
-Thats it!
 
 
 
