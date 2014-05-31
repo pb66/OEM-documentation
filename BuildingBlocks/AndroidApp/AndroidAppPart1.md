@@ -1,4 +1,4 @@
-## Emon Android App project log + ongoing build guide
+## How to build an Energy Monitoring Android App
 
 1) Start by installing Eclipse with Android SDK
 
@@ -250,7 +250,7 @@ Merging this with the MainActivity class and moving the HTTP request to within t
 		
 		    Log.i("EmonLog", "onCreate");
 		
-		    powerval = (TextView) findViewById(R.id.test);
+		    powerval = (TextView) findViewById(R.id.powervalue);
 	    }
 
 	    @Override
