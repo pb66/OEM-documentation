@@ -2,6 +2,8 @@
 
 1. Start by installing Eclipse with Android SDK
 
+[https://developer.android.com/sdk/installing/installing-adt.html](https://developer.android.com/sdk/installing/installing-adt.html)
+
 2. Click New > Android Application Project. Give it a name such as HelloWorld. Select Android 4.2 for minimum required SDK. Click Next > Next > Next > Next > Finish.
 
 ![New Project](files/NewProject.png)
