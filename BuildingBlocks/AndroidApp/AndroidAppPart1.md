@@ -1,18 +1,18 @@
 ## Emon Android App project log + ongoing build guide
 
-1. Start by installing Eclipse with Android SDK
+1) Start by installing Eclipse with Android SDK
 
 [https://developer.android.com/sdk/installing/installing-adt.html](https://developer.android.com/sdk/installing/installing-adt.html)
 
-2. Click New > Android Application Project. Give it a name such as HelloWorld. Select Android 4.2 for minimum required SDK. Click Next > Next > Next > Next > Finish.
+2) Click New > Android Application Project. Give it a name such as HelloWorld. Select Android 4.2 for minimum required SDK. Click Next > Next > Next > Next > Finish.
 
 ![New Project](files/NewProject.png)
 
-3. Click Run, in adroid device chooser select 'Launch a new Android Virtual Device' then 'Manager' > 'New'. Give your virtual android a name and select a screen that's similar to your phone. Select your newly created virtual device and click Start to launch. Go back to the Android Device Chooser and select the newly appeared emulator.
+3) Click Run, in adroid device chooser select 'Launch a new Android Virtual Device' then 'Manager' > 'New'. Give your virtual android a name and select a screen that's similar to your phone. Select your newly created virtual device and click Start to launch. Go back to the Android Device Chooser and select the newly appeared emulator.
 
 ![Android Emulator](files/AndroidDeviceManager.png)
 
-4. Click Start, in a few moments your HelloWorld app will appear.
+4) Click Start, in a few moments your HelloWorld app will appear.
 
 ![HelloWorld App](files/Emulator.png)
 
