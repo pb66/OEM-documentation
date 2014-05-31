@@ -17,10 +17,10 @@
 ![HelloWorld App](files/Emulator.png)
 
 **Uploading the app to your phone**
-- Turn on developer mode: Click on Settings > About Phone, click 7 times on build number at the bottom to unlock developer mode.
-- Enable USB Debugging in your phone's developer mode settings
-- Connect your phone to your computer with a USB cable 
-- The phone should now appear in the targets list when you click on run in eclipse.
+1. Turn on developer mode: Click on Settings > About Phone, click 7 times on build number at the bottom to unlock developer mode.
+2. Enable USB Debugging in your phone's developer mode settings
+3. Connect your phone to your computer with a USB cable 
+4, The phone should now appear in the targets list when you click on run in eclipse.
 
 ### 1) Fetching a feed value
 
