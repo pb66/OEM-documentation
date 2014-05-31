@@ -195,7 +195,9 @@ The on create method should now look like this:
 	}
 
 **Run**
-The Android virtual device display should now get the latest feed value and display it on the screen.
+The Android virtual device display should now get the latest feed value and display it on the screen, which will look like this:
+
+![TextView Power Value](files/TextValuePowerval.png)
 
 ### 3) Periodic updating, get the latest feed value every 10 seconds.
 
