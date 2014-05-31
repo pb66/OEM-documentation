@@ -122,7 +122,6 @@ Then in the MainActivity class execute the HTTP AsyncTask class like this:
 If you now run this on your virtual android device and look at the result in the eclipse LogCat (below the source code editor) you should see that it makes a successful request to the emoncms.org server and returns a feed value.
 
 **Tip: Logging**
-
 A useful tool while developing is to make use of logging as a way of providing feedback on what's happening in your app by outputing where in the app its got to and variable values in the console.
 
 To log an info message type:
@@ -137,7 +136,7 @@ Click on LogCat below the eclipse source code editor when the android app is run
 
     tag:MyAppLog
     
-This will only show your logs.
+This will only show the logs that you define rather than everything including system logs.
 
 ### 2) Updating the display
 
