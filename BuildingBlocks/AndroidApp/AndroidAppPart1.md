@@ -4,7 +4,15 @@
 
 2. Click New > Android Application Project. Give it a name such as HelloWorld. Select Android 4.2 for minimum required SDK. Click Next > Next > Next > Next > Finish.
 
-3. Click Run, in adroid device chooser select 'Launch a new Android Virtual Device' then 'Manager' > 'New'. Give your virtual android a name and select a screen that's similar to your phone. Select your newly created virtual device and click Start to launch. Go back to the Android Device Chooser and select the newly appeared emulator. Click Ok, in a few moments your HelloWorld app will appear.
+![New Project](files/NewProject.png)
+
+3. Click Run, in adroid device chooser select 'Launch a new Android Virtual Device' then 'Manager' > 'New'. Give your virtual android a name and select a screen that's similar to your phone. Select your newly created virtual device and click Start to launch. Go back to the Android Device Chooser and select the newly appeared emulator.
+
+![Android Emulator](files/AndroidDeviceManager.png)
+
+4. Click Start, in a few moments your HelloWorld app will appear.
+
+![HelloWorld App](files/Emulator.png)
 
 ### 1) Fetching a feed value
 
