@@ -19,3 +19,8 @@ Open, downloadable, editable documentation (via git).
 * [Gateway](Modules/RaspberryPI/Gateway/gateway.md)
 * [Full Stack HDD](Modules/RaspberryPI/FullStackHDD/FullStackHDD.md)
 * [Full Stack HDD + scheduler](Modules/RaspberryPI/FullStackHDDScheduler/FullStackHDDScheduler.md)
+
+## Building Blocks
+
+* [How to build an Energy Monitoring Android App P1](BuildingBlocks/AndroidApp/AndroidAppPart1.md)
+* [Drawing a myelectric style bar chart](BuildingBlocks/DrawingABarChart/DrawingABarChart.md)
