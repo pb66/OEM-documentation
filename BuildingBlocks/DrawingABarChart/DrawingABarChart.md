@@ -2,7 +2,7 @@
 
 Both the myelectric emoncms module and the soon to be myelectric android app have a bar chart that is written using the 2d graphics canvas. This short guide details how the bar chart is built and the first part is written to be applicable for different programming languages with examples in each particular language at the end. 
 
-Writing your own graphs is not as complicated as I did initially imagine it to be and once you have a grasp of 2d graphics canvas sometimes its easier to write your own graph to get the style that you want. The myelectric graph was written from scratch in order to achieve a precise look: simple color scheme, bar height values overlayed on the bar, kWh label in the top-left corner.
+Writing custom graphs is not as complicated as I initially imagined it to be. Once you have a grasp of 2d graphics canvas sometimes its easier to write your own graph to get the style that you want. The myelectric graph was written from scratch in order to achieve a precise look: simple color scheme, bar height values overlayed on the bar, kWh label in the top-left corner.
 
 ![Bar chart](files/bargraphic.png)
 
