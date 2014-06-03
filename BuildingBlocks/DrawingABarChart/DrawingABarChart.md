@@ -65,31 +65,38 @@ Where barwidth is also defined in time i.e: the bar width could be set to span 2
         [1401753600, 5.0]
     ]
     
+    graphWidth = 400
+    graphHeight = 400
+    margin = 10
+    
+    innerWidth = graphWidth - 2*margin
+    innerHidth = graphHidth - 2*margin
+    
     xmin = 1401235200
     xmax = 1401753600
     ymin = 0
     ymax = 7.6
     
-    barwidth = 20 * 3600
+    barWidth = 20 * 3600
     
-    xmin -= barwidth / 2
-    xmax += barwidth / 2
+    xmin -= barWidth / 2
+    xmax += barWidth / 2
     
-    barwidthpx = (barwidth / (xmax - xmin)) * innerwidth
+    barWidthpx = (barWidth / (xmax - xmin)) * innerWidth
     
     for (z in data)
     {
         time = data[z][0]
         value = data[z][1]
         
-        px = ((time - xmin) / (xmax - xmin)) * innerwidth
-        py = ((value - ymin) / (ymax - ymin)) * innerheight
+        px = ((time - xmin) / (xmax - xmin)) * innerWidth
+        py = ((value - ymin) / (ymax - ymin)) * innerHeight
             
-        barLeft = margin + px - barwidthpx / 2
-        barBottom = margin + innerheight
+        barLeft = margin + px - barWidthpx / 2
+        barBottom = margin + innerHeight
             
         barTop = barBottom - py
-        barRight = barLeft + barwidthpx
+        barRight = barLeft + barWidthpx
         
         drawRect(barLeft,barTop,barRight,barBottom)
     }
