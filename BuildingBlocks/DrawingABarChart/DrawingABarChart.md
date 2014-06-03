@@ -110,6 +110,10 @@ Generic example code:
 
 A full example app of drawing the graph plus a few extras:
 
+![Android graph example](files/myelectricandroidgraph.png)
+
+Copy and paste into a new android application project to run:
+
     package com.example.draw;
 
     import java.util.Iterator;
