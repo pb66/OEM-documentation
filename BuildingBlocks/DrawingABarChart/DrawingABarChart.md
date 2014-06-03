@@ -102,3 +102,4 @@ Where barwidth is also defined in time i.e: the bar width could be set to span 2
     }
     
     
+Note: the y axis goes down from the top of the screen rather than up from the bottom, hence: barTop = barBottom **- py**
