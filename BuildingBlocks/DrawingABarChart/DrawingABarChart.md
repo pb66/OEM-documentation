@@ -10,14 +10,14 @@ The essential part of creating a graph is mapping the data time:value coordinate
 
 Lets start by taking an example dataset for 7 days of electricity consumption in kWh/d:
 
-  time, value
-  1401235200, 4.8
-  1401321600, 5.8
-  1401408000, 5.0
-  1401494400, 7.6
-  1401580800, 4.4
-  1401667200, 2.3
-  1401753600, 5.0
+    time, value
+    1401235200, 4.8
+    1401321600, 5.8
+    1401408000, 5.0
+    1401494400, 7.6
+    1401580800, 4.4
+    1401667200, 2.3
+    1401753600, 5.0
 
 
 
