@@ -52,3 +52,46 @@ But in order that the bar's which are centered at their x positions dont overlap
     xmax = dataxmax + barwidth / 2
     
 Where barwidth is also defined in time i.e: the bar width could be set to span 20 hours.    
+
+### 3) Putting it all together
+
+    data = [
+        [1401235200, 4.8],
+        [1401321600, 5.8],
+        [1401408000, 5.0],
+        [1401494400, 7.6],
+        [1401580800, 4.4],
+        [1401667200, 2.3],
+        [1401753600, 5.0]
+    ]
+    
+    xmin = 1401235200
+    xmax = 1401753600
+    ymin = 0
+    ymax = 7.6
+    
+    barwidth = 20 * 3600
+    
+    xmin -= barwidth / 2
+    xmax += barwidth / 2
+    
+    barwidthpx = (barwidth / (xmax - xmin)) * innerwidth
+    
+    for (z in data)
+    {
+        time = data[z][0]
+        value = data[z][1]
+        
+        px = ((time - xmin) / (xmax - xmin)) * innerwidth
+        py = ((value - ymin) / (ymax - ymin)) * innerheight
+            
+        barLeft = margin + px - barwidthpx / 2
+        barBottom = margin + innerheight
+            
+        barTop = barBottom - py
+        barRight = barLeft + barwidthpx
+        
+        drawRect(barLeft,barTop,barRight,barBottom)
+    }
+    
+    
