@@ -108,94 +108,154 @@ Generic example code:
 
 ### Android java canvas
 
-    public void drawGraph(Canvas canvas)
-    {
-        // Example data
-        LinkedHashMap data = new LinkedHashMap<Integer, Float>();
-        data.put(1401321600, 2.5f);
-        data.put(1401408000, 4.4f);
-        data.put(1401494400, 3.3f);
-        data.put(1401580800, 8.5f);
-        data.put(1401667200, 6.5f);
-        data.put(1401753600, 6.4f);
-        
-    	int left = 20;
-    	int top = 200;
-    	
-    	int graphWidth = 400;
-    	int graphHeight = 400;
-    	int margin = 10;
-    	
-    	int innerWidth = width - 2*margin;
-    	int innerHeight = height - 2*margin;
-    	
-        // Draw Axes
-        paint.setColor(Color.rgb(6,153,250));
-    	canvas.drawLine(left, top, left, top+height, paint);
-    	canvas.drawLine(left, top+height, left+width, top+height, paint);
-        
-        // Auto detect xmin, xmax, ymin, ymax
-        float xmin = 0;
-        float xmax = 0;
-        float ymin = 0;
-        float ymax = 0;
-        
-        Iterator<Integer> keySetIterator = data.keySet().iterator();
-		while(keySetIterator.hasNext()){
-		    Integer time = keySetIterator.next();
-		    float value = (Float) data.get(time);
-		    // Log.i("EmonLog", "time:"+time+" value="+value);
-		    
-            if (!s) {
-            	xmin = time;
-            	xmax = time;
-            	ymin = value;
-            	ymax = value;
-            	s = true;
-            }
-	                    
-	        if (value>ymax) ymax = value;
-	        if (value<ymin) ymin = value;
-	        if (time>xmax) xmax = time;
-	        if (time<xmin) xmin = time;               
+A full example app of drawing the graph plus a few extras:
+
+    package com.example.draw;
+
+    import java.util.Iterator;
+    import java.util.LinkedHashMap;
+
+    import android.os.Bundle;
+    import android.app.Activity;
+    import android.content.Context;
+    import android.graphics.Canvas;
+    import android.graphics.Color;
+    import android.graphics.Paint;
+    import android.graphics.Paint.Align;
+    import android.graphics.Typeface;
+    import android.view.View;
+
+    public class MainActivity extends Activity {
+
+	    @Override
+	    protected void onCreate(Bundle savedInstanceState) {
+		    super.onCreate(savedInstanceState);
+		
+		    DrawView drawView = new DrawView(this);
+            drawView.setBackgroundColor(Color.BLACK);
+            setContentView(drawView);
+	    }
+    }
+
+    class DrawView extends View {
+	    Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
+	
+        public DrawView(Context context) {
+            super(context);
         }
         
-        // Fixed min y
-	    ymin = 0;
-        
-        float barWidth = 3600*20;
-        xmin -= barWidth /2;
-        xmax += barWidth /2;
-        
-        float barWidthpx = (barWidth / (xmax - xmin)) * innerWidth;
- 
-        // kWh labels on each bar
-        paint.setTextAlign(Align.CENTER);
-        paint.setTextSize(16);
-        
-        keySetIterator = data.keySet().iterator();
-  
-		while(keySetIterator.hasNext()){
-		
-		    Integer time = keySetIterator.next();
-		    float value = (Float) data.get(time);
-		    
-            float px = ((time - xmin) / (xmax - xmin)) * innerWidth;
-            float py = ((value - ymin) / (ymax - ymin)) * innerHeight;
+        @Override
+        public void onDraw(Canvas canvas) {
+        	
+        	paint.setColor(Color.BLACK);
+            canvas.drawRect(0, 0, getWidth(), getHeight(), paint);
             
-            float barLeft = left + margin + px - barWidthpx/2;
-            float barBottom = top + margin + innerHeight;
+            // My Electric text
+            paint.setColor(Color.rgb(230, 230, 230));
+            paint.setTextSize(22);
+            canvas.drawText("My Electric:", 25, 47, paint);
             
-            float barTop = barBottom - py;
-            float barRight = barLeft + barWidthpx;
-            
+            // Power value text
+            float power = 250;
             paint.setColor(Color.rgb(6,153,250));
-            canvas.drawRect(barLeft,barTop,barRight,barBottom,paint);
+            paint.setTextSize(100);        
+            Typeface tf = Typeface.create("Roboto Bold",Typeface.BOLD);
+            paint.setTypeface(tf);
+            canvas.drawText(String.format("%.0f", power)+"W", 25, 140, paint);
             
-			// Draw kwh label text
-			if (py>25) {
-			  paint.setColor(Color.rgb(255,255,255));
-			  canvas.drawText(String.format("%.1f", value), left+margin+px, barTop + 25, paint);
-			}
+            // Draw graph
+            drawGraph(canvas);
+        }
+        
+        public void drawGraph(Canvas canvas)
+        {
+            // Example data
+            LinkedHashMap data = new LinkedHashMap<Integer, Float>();
+            data.put(1401321600, 2.5f);
+            data.put(1401408000, 4.4f);
+            data.put(1401494400, 3.3f);
+            data.put(1401580800, 8.5f);
+            data.put(1401667200, 6.5f);
+            data.put(1401753600, 6.4f);
+
+            int left = 20;
+            int top = 200;
+
+            int graphWidth = getWidth()-40;
+            int graphHeight = 400;
+            int margin = 10;
+
+            int innerWidth = graphWidth - 2*margin;
+            int innerHeight = graphHeight - 2*margin;
+
+            // Draw Axes
+            paint.setColor(Color.rgb(6,153,250));
+            canvas.drawLine(left, top, left, top+graphHeight, paint);
+            canvas.drawLine(left, top+graphHeight, left+graphWidth, top+graphHeight, paint);
+
+            // Auto detect xmin, xmax, ymin, ymax
+            float xmin = 0;
+            float xmax = 0;
+            float ymin = 0;
+            float ymax = 0;
+            boolean s = false;
+
+            Iterator<Integer> keySetIterator = data.keySet().iterator();
+            while(keySetIterator.hasNext()){
+                Integer time = keySetIterator.next();
+                float value = (Float) data.get(time);
+
+                if (!s) {
+                    xmin = time;
+                    xmax = time;
+                    ymin = value;
+                    ymax = value;
+                    s = true;
+                }
+
+                if (value>ymax) ymax = value;
+                if (value<ymin) ymin = value;
+                if (time>xmax) xmax = time;
+                if (time<xmin) xmin = time;               
+            }
+
+            // Fixed min y
+            ymin = 0;
+
+            float barWidth = 3600*20;
+            xmin -= barWidth /2;
+            xmax += barWidth /2;
+
+            float barWidthpx = (barWidth / (xmax - xmin)) * innerWidth;
+
+            // kWh labels on each bar
+            paint.setTextAlign(Align.CENTER);
+            paint.setTextSize(16);
+
+            keySetIterator = data.keySet().iterator();
+
+            while(keySetIterator.hasNext()){
+
+                Integer time = keySetIterator.next();
+                float value = (Float) data.get(time);
+
+                float px = ((time - xmin) / (xmax - xmin)) * innerWidth;
+                float py = ((value - ymin) / (ymax - ymin)) * innerHeight;
+
+                float barLeft = left + margin + px - barWidthpx/2;
+                float barBottom = top + margin + innerHeight;
+
+                float barTop = barBottom - py;
+                float barRight = barLeft + barWidthpx;
+
+                paint.setColor(Color.rgb(6,153,250));
+                canvas.drawRect(barLeft,barTop,barRight,barBottom,paint);
+
+                // Draw kwh label text
+                if (py>25) {
+                  paint.setColor(Color.rgb(255,255,255));
+                  canvas.drawText(String.format("%.1f", value), left+margin+px, barTop + 25, paint);
+                }
+            }
         }
     }
