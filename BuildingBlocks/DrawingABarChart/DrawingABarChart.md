@@ -31,7 +31,7 @@ The largest bar is 7.6 kWh, defining 7.6 as out maximum (Data.ymax) and 0 kWh as
     
 or in a more generic form:
 
-    barheightpx = ((kwhvalue - ymin) / (ymax - ymin)) x innerheightpx;
+    py = ((kwhvalue - ymin) / (ymax - ymin)) x innerheightpx;
     
 where:
 
@@ -44,7 +44,7 @@ where:
 
 Mapping the x-axis is very similar:
 
-    x = ((time - xmin) / (xmax - xmin)) x innerwidthpx;
+    px = ((time - xmin) / (xmax - xmin)) x innerwidthpx;
     
 But in order that the bar's which are centered at their x positions dont overlap the left and right edge of the graph the xmin and xmax property need to be extended slightly:
 
