@@ -10,7 +10,7 @@ The essential part of creating a graph is mapping the data time:value coordinate
 
 Lets start by taking an example dataset for 7 days of electricity consumption in kWh/d:
 
-    time, value
+    time, kWh
     1401235200, 4.8
     1401321600, 5.8
     1401408000, 5.0
@@ -18,6 +18,28 @@ Lets start by taking an example dataset for 7 days of electricity consumption in
     1401580800, 4.4
     1401667200, 2.3
     1401753600, 5.0
+    
+Lets give our graph a width of 400px (pixels) and height of 400px and a margin of 10px.
+
+### 1) Mapping kWh value to the canvas y-axis
+
+In the diagram above our graph has a margin between the outer box and the internal dotted line box. The largest bar that we have should span the whole height of the internal box.
+
+The largest bar is 7.6 kWh, defining 7.6 as out maximum (Data.ymax) and 0 kWh as our minimum (Data.ymin) the height of the 7.6kWh bar should be the height of the internal space = 400px - 2x 10px = 380px. The height of a 0 kWh bar should be 0px and so any bar inbetween can be calculated as:
+
+    barheightpx = (kwhvalue / 7.6) x 380px
+    
+or in a more generic form:
+
+    barheightpx = ((kwhvalue - ymin) / (ymax - ymin)) x innerheightpx;
+    
+where:
+
+    ymin = 0
+    ymax = 7.6
+    innerheightpx = graphheightpx - 2 x margin
+    
+
 
 
 
