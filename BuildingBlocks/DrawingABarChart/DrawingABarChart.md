@@ -40,8 +40,15 @@ where:
     innerheightpx = graphheightpx - 2 x margin
     
 
+### 2) Mapping time on to the canvas x-axis
 
+Mapping the x-axis is very similar:
 
+    x = ((time - xmin) / (xmax - xmin)) x innerwidthpx;
+    
+But in order that the bar's which are centered at their x positions dont overlap the left and right edge of the graph the xmin and xmax property need to be extended slightly:
 
-
-
+    xmin = dataxmin - barwidth / 2
+    xmax = dataxmax + barwidth / 2
+    
+Where barwidth is also defined in time i.e: the bar width could be set to span 20 hours.    
