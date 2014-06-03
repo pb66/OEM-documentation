@@ -55,6 +55,8 @@ Where barwidth is also defined in time i.e: the bar width could be set to span 2
 
 ### 3) Putting it all together
 
+Generic example code:
+
     data = [
         [1401235200, 4.8],
         [1401321600, 5.8],
@@ -102,4 +104,98 @@ Where barwidth is also defined in time i.e: the bar width could be set to span 2
     }
     
     
-Note: the y axis goes down from the top of the screen rather than up from the bottom, hence: barTop = barBottom **- py**
+**Note:** the y axis goes down from the top of the screen rather than up from the bottom, hence: barTop = barBottom **- py**
+
+### Android java canvas
+
+    public void drawGraph(Canvas canvas)
+    {
+        // Example data
+        LinkedHashMap data = new LinkedHashMap<Integer, Float>();
+        data.put(1401321600, 2.5f);
+        data.put(1401408000, 4.4f);
+        data.put(1401494400, 3.3f);
+        data.put(1401580800, 8.5f);
+        data.put(1401667200, 6.5f);
+        data.put(1401753600, 6.4f);
+        
+    	int left = 20;
+    	int top = 200;
+    	
+    	int graphWidth = 400;
+    	int graphHeight = 400;
+    	int margin = 10;
+    	
+    	int innerWidth = width - 2*margin;
+    	int innerHeight = height - 2*margin;
+    	
+        // Draw Axes
+        paint.setColor(Color.rgb(6,153,250));
+    	canvas.drawLine(left, top, left, top+height, paint);
+    	canvas.drawLine(left, top+height, left+width, top+height, paint);
+        
+        // Auto detect xmin, xmax, ymin, ymax
+        float xmin = 0;
+        float xmax = 0;
+        float ymin = 0;
+        float ymax = 0;
+        
+        Iterator<Integer> keySetIterator = data.keySet().iterator();
+		while(keySetIterator.hasNext()){
+		    Integer time = keySetIterator.next();
+		    float value = (Float) data.get(time);
+		    // Log.i("EmonLog", "time:"+time+" value="+value);
+		    
+            if (!s) {
+            	xmin = time;
+            	xmax = time;
+            	ymin = value;
+            	ymax = value;
+            	s = true;
+            }
+	                    
+	        if (value>ymax) ymax = value;
+	        if (value<ymin) ymin = value;
+	        if (time>xmax) xmax = time;
+	        if (time<xmin) xmin = time;               
+        }
+        
+        // Fixed min y
+	    ymin = 0;
+        
+        float barWidth = 3600*20;
+        xmin -= barWidth /2;
+        xmax += barWidth /2;
+        
+        float barWidthpx = (barWidth / (xmax - xmin)) * innerWidth;
+ 
+        // kWh labels on each bar
+        paint.setTextAlign(Align.CENTER);
+        paint.setTextSize(16);
+        
+        keySetIterator = data.keySet().iterator();
+  
+		while(keySetIterator.hasNext()){
+		
+		    Integer time = keySetIterator.next();
+		    float value = (Float) data.get(time);
+		    
+            float px = ((time - xmin) / (xmax - xmin)) * innerWidth;
+            float py = ((value - ymin) / (ymax - ymin)) * innerHeight;
+            
+            float barLeft = left + margin + px - barWidthpx/2;
+            float barBottom = top + margin + innerHeight;
+            
+            float barTop = barBottom - py;
+            float barRight = barLeft + barWidthpx;
+            
+            paint.setColor(Color.rgb(6,153,250));
+            canvas.drawRect(barLeft,barTop,barRight,barBottom,paint);
+            
+			// Draw kwh label text
+			if (py>25) {
+			  paint.setColor(Color.rgb(255,255,255));
+			  canvas.drawText(String.format("%.1f", value), left+margin+px, barTop + 25, paint);
+			}
+        }
+    }
