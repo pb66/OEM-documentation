@@ -2,7 +2,7 @@
 
 ![Complete display](files/app2fulldisplay.png)
 
-Complete code example:
+Complete code example, MainActivity.java:
 
     package com.example.draw;
 
