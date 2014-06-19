@@ -64,6 +64,8 @@ These 3 engines provide between them an implementation that can fit most applica
 
 Time Series feed engine development is not yet complete, the current area of research is how best to add write buffering in order to make the writing of the time series data much more efficient.
 
+Due to the way filesystems work writing 9  bytes at a time to each data file in this way is not particularly write efficient. File systems usually have a minimum IO size that is much larger than 9 bytes (i.e 512 bytes), we can improve the engine write implementation by buffering and writing in large blocks that are closer to this minimum IO size. This is the current area of research in emoncms feed engines.
+
 ## Blog posts and related links
 
 [18th Feb 2014: Emoncms v8, New feed engines, PHPFiwa, PHPFina](http://openenergymonitor.org/emon/node/3868)
