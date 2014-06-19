@@ -24,7 +24,7 @@ This however does not enforce timestamp ordering or ensure that if the datafile 
     $last_datapoint_position = ($npoints – 1) * 9.0; 
     fseek($fh,$last_datapoint_position);
 
-Note: Due to the way filesystems work writing 9  bytes at a time to each data file in this way is not particularly write efficient. File systems usually have a minimum IO size that is much larger than 9 bytes, we can improve the engine write implementation by buffering and writing in large blocks that are closer to this minimum IO size. This is the current area of research in emoncms feed engines and there is more on this below.
+Note: Due to the way filesystems work writing 9  bytes at a time to each data file in this way is not particularly write efficient. File systems usually have a minimum IO size that is much larger than 9 bytes, we can improve the engine write implementation by buffering and writing in large blocks that are closer to this minimum IO size. This is the current area of research in emoncms feed engines.
 
 ### Reading from the timeseries data file.
 
