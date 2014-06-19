@@ -13,16 +13,16 @@ Each data point is stored as a fixed length binary. In PHPTimeSeries each datapo
 
 Adding a new datapoint to the timeseries data file could be as simple as:
 
-	$fh = fopen("feed.1.dat","a");
-	fwrite($fh,pack("If",$time,$value));
-	fclose($fh);
+    $fh = fopen("feed.1.dat","a");
+    fwrite($fh,pack("If",$time,$value));
+    fclose($fh);
 
 This however does not enforce timestamp ordering or ensure that if the datafile was partially writen in a previous write the new datapoint is in the correct multiple of 9 bytes position in the file.
 
-	$fh = fopen("feed.1.dat","c+");
-	$npoints = floor(filesize("feed.1.dat") / 9.0);
-	$last\_datapoint\_position = ($npoints – 1) * 9.0; 
-	fseek($fh,$last\_datapoint\_position);
+    $fh = fopen("feed.1.dat","c+");
+    $npoints = floor(filesize("feed.1.dat") / 9.0);
+    $last_datapoint_position = ($npoints – 1) * 9.0; 
+    fseek($fh,$last_datapoint_position);
 
 Note: Due to the way filesystems work writing 9  bytes at a time to each data file in this way is not particularly write efficient. File systems usually have a minimum IO size that is much larger than 9 bytes, we can improve the engine write implementation by buffering and writing in large blocks that are closer to this minimum IO size. This is the current area of research in emoncms feed engines and there is more on this below.
 
@@ -44,6 +44,7 @@ To view and explore historical timeseries data it's useful to be able to zoom in
 There are several different ways that this can be done, one often used approach is to pre-compile downsampled layers that are the arithmetic mean of the higher resolution layers above, this allows for the selection of one block from the relevant layer and has the added advantage that the datapoints returned are representative of the period they represent, this approach is used in the more advanced fixed interval with averaging time series engine that is also an option within emoncms.
 
 The other approach currently used in the PHPTimeSeries engine is to request a datapoint at evenly spaced out intervals in time in the query range.
+
 For example if our query spanned 10th of February 2014 (timestamp: 1391990400) to 17th of June 2014 (1402963200) this would cover a range of 10,972,800 seconds, if the underlying data was recorded at around 10 second intervals and we want 800 datapoints across the range we need to pull out a datapoint every ~1370 seconds.
 
 To fetch a datapoint at a given time from the  datafile above we need to search through the file for a datapoint that is closest to the requested time. We can do this efficiently using a search algorithm called a binary search, a binary search can be used where the data is ordered. Our timeseries data is ordered by time ascending and so is perfect for using a binary search.
