@@ -44,8 +44,8 @@ The get data query parameters are the start time, end time and the data interval
 
 1) Find the position of the datapoint nearest the query start time and calculate the skip size (number of datapoints we need to skip) in order to output the datapoints at the requested data interval.
 
-    $start\_position = ceil(($query\_start - $meta->start_time) / $meta->interval);
-    $skip\_size = round($out\_interval / $meta->interval);
+    $start_position = ceil(($query_start - $meta->start_time) / $meta->interval);
+    $skip_size = round($out_interval / $meta->interval);
 
 2) Itterate through the data file from the start position reading data points at the skip size until the end time or the end of the file is reached.
 
