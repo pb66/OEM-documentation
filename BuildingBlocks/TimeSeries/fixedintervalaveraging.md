@@ -1,5 +1,7 @@
 ## Fixed interval with Averaging
 
+PHPFiwa source code can be found here: [PHPFiwa.php](https://github.com/emoncms/emoncms/blob/master/Modules/feed/engine/PHPFiwa.php)
+
 The fixed interval with averaging feed engine within emoncms is an extention of the fixed interval engine but instead of one high resolution data layer it produces several additional layers that are lower resolution averages. For example: A time series feed that has a base interval of 10 seconds may then have a 60s average layer, a 10 minute average layer and an hour average layer.
 
 Calculating average layers on the fly like this provides several advantages:
