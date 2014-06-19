@@ -1,6 +1,7 @@
 ## Emoncms Time Series engine history
 
-Writing, storing and viewing time series data is a core part of an energy monitoring application like emoncms. Over the years the way time series data has been handled in emoncms has gone through several significant revisions both out of necessity as emoncms.org use has grown and through increased understanding of how disks and filesystems work and how to reduce disk IO through in-memory storage. In order to best describe the current solution it helps to begin with a brief history of time series database design within emoncms.
+Writing, storing and viewing time series data is a core part of an energy monitoring application like emoncms. Over the years the way time series data has been handled in emoncms has gone through several significant revisions both out of necessity as emoncms.org use has grown and through increased understanding of how disks and filesystems work and how to reduce disk IO through in-memory storage.
+In order to best describe the current solution it helps to begin with a brief history of time series database design within emoncms.
 
 Time series data is a series of timestamped measurements. For example a temperature time series may look like this:
 
@@ -24,9 +25,9 @@ In May 2013 Mike Stirling who wrote a time series database called timestore got 
 
 [31st Jul 2013: From 1.3 minutes to 196ms: timestore on emoncms.org](http://openenergymonitor.blogspot.com/2013/07/from-13-minutes-to-196ms-timestore-on.html)
 
-[1st Aug 2013: Preparing emoncms.org feeds for conversion to timestore](http://openenergymonitor.blogspot.com/2013/08/preparing-emoncmsorg-feeds-for.html)
+Timestore became the engine of choice within emoncms in late July 2013 providing a huge boost in performance but converting the large amounts of mysql time series data to timestore on an already stretched server was very time consuming. I started to experiment with writing time series engines with direct file access from scratch in php and realised that it wasn’t that hard to write an engine that could take the GB's of mysql time series data amassed on emoncms.org move it to another folder and read and write to it directly obtaining significantly improved performance over mysql without requiring timely conversion. This engine became the PHPTimeSeries engine which is a variable interval time series engine documented in full here:
 
-Timestore became the engine of choice within emoncms in late July 2013 providing a huge boost in performance but converting the large amounts of mysql time series data to timestore on an already stretched server was very time consuming. I started to experiment with writing time series engines with direct file access from scratch in php and realised that it wasn’t that hard to write an engine that could take the GB's of mysql time series data amassed on emoncms.org move it to another folder and read and write to it directly obtaining significantly improved performance over mysql without requiring timely conversion. This engine became the PHPTimeSeries engine which is a variable interval time series engine documented in full below.
+[Documentation: Variable Interval time series implementation](variableinterval.md)
 
 [4th Jul 2013: More direct file storage research](http://openenergymonitor.blogspot.com/2013/07/more-direct-file-storage-research.html)
 
@@ -44,7 +45,10 @@ The next big capacity improvement came from moving the server to Solid State Dri
 
 At this point with much reduced mysql load, very fast graph load times thanks to timestore it seemed that from an emoncms.org load and user experience point of view it seemed we had a winning solution, but a few months later another instability began to occur. Timestore would freeze up for seconds at a time. I managed to replicate the issue on my local machine. I poured through the timestore code (thanks to Mike for making timestore open source) and started to understand how timestore worked, Im not a good c programmer so to try and check if I understood it I started writing a port in php. I then did some performance testing on both versions. It turned out that the php port didn’t suffer from the stability issue and continued to be stable up to its maximum post rate which was over 10x the current emoncms.org load which was quite a result and so I decided to move over to using the php port with the added benefit that I now knew how every line of code worked and so could adapt as needed in future.
 
-[18th Feb 2014: Emoncms v8, New feed engines, PHPFiwa, PHPFina](http://openenergymonitor.org/emon/node/3868)
+- [18th Feb 2014: Emoncms v8, New feed engines, PHPFiwa, PHPFina](http://openenergymonitor.org/emon/node/3868)
+- [Documentation: Variable interval time series](variableinterval.md)
+- [Documentation: Fixed interval time series](fixedinterval.md)
+- [Documentation: Fixed interval with averaging time series](fixedintervalaveraging.md)
 
 This brings us to the present day with the 3 main emoncms feed engines:
 
@@ -65,8 +69,6 @@ Time Series feed engine development is not yet complete, the current area of res
 [18th Feb 2014: Emoncms v8, New feed engines, PHPFiwa, PHPFina](http://openenergymonitor.org/emon/node/3868)
 
 [8th Nov 2013: Improving emoncms performance with Redis plus interesting consequences for SD cards](http://openenergymonitor.blogspot.co.uk/2013/11/improving-emoncms-performance-with_8.html)
-
-[1st Aug 2013: Preparing emoncms.org feeds for conversion to timestore](http://openenergymonitor.blogspot.com/2013/08/preparing-emoncmsorg-feeds-for.html)
 
 [31st Jul 2013: From 1.3 minutes to 196ms: timestore on emoncms.org](http://openenergymonitor.blogspot.com/2013/07/from-13-minutes-to-196ms-timestore-on.html)
 
