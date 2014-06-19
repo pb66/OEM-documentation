@@ -22,18 +22,18 @@ Two files are required for each fixed interval feed, a meta file to store the st
 
 To write fixed interval data there are three steps:
 
-1. Calculate the file position of the datapoint to be written.
+1) Calculate the file position of the datapoint to be written.
 
     $timestamp = floor($timestamp / $meta->interval) * $meta->interval;
     $position = floor(($timestamp - $meta->start_time) / $meta->interval);
 
-2. If there is a gap between the datapoint to be written and the last datapoint then padd the gap with NAN values, to padd efficiently buffer the padding.
+2) If there is a gap between the datapoint to be written and the last datapoint then padd the gap with NAN values, to padd efficiently buffer the padding.
 
     $buffer = pack("f",NAN);
     $buffer .= …
     fwrite($fh,$buffer);
 
-3. Write the new datapoint at the end.
+3) Write the new datapoint at the end.
 
     fseek($fh,4*$position);
     fwrite($fh,pack("f",$value));
@@ -42,12 +42,12 @@ To write fixed interval data there are three steps:
 
 The get data query parameters are the start time, end time and the data interval of the output data.
 
-1. Find the position of the datapoint nearest the query start time and calculate the skip size (number of datapoints we need to skip) in order to output the datapoints at the requested data interval.
+1) Find the position of the datapoint nearest the query start time and calculate the skip size (number of datapoints we need to skip) in order to output the datapoints at the requested data interval.
 
-    $start\_position = ceil(($query\_start - $meta->start_time) / $meta->interval);
-    $skip\_size = round($out\_interval / $meta->interval);
+    $start_position = ceil(($query_start - $meta->start_time) / $meta->interval);
+    $skip_size = round($out_interval / $meta->interval);
 
-2. Itterate through the data file from the start position reading data points at the skip size until the end time or the end of the file is reached.
+2) Itterate through the data file from the start position reading data points at the skip size until the end time or the end of the file is reached.
 
     $data = array();
     $fh = fopen($this->dir.$meta->id.".dat", 'rb');
