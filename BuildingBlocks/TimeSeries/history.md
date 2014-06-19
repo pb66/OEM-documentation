@@ -15,6 +15,8 @@ After around 5 months query times became increasingly slow nearing 12s for a his
 
 While it worked sufficiently well on a server with a light load, as emoncms.org grew this approach became again unusable, whenever the mysql query queue became more than a few tens of lines the delay added, waiting for the queue to process each request slowed down the overall historical data request to significantly. A series of improvements to emoncms that reduced the number of mysql queries performed in input processing gave a little bit more time of ok performance but it never took long for emoncms to grow and usability to deteriorate. 
 
+[Emoncms input processing documentation](http://emoncms.org/site/docs/developinputproc)
+
 [30th May 2013: Emoncms.org load stats](http://openenergymonitor.blogspot.com/2013/05/emoncmsorg-load-stats.html)
 
 In May 2013 Mike Stirling who wrote a time series database called timestore got in touch, suggesting I took a look at his work. Timestore is a dedicated time series database written in c, its data request performance and disk use blew the results I had go so far with mysql away. Over halving disk use and reducing data request times by another 10x on a non loaded server and around 398x to 196ms on a busy server.
