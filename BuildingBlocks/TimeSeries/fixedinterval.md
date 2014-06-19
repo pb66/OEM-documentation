@@ -1,4 +1,6 @@
-## Fixed interval
+## Fixed interval no averaging (PHP Fina)
+
+PHPFina source code can be found here: [PHPFina.php](https://github.com/emoncms/emoncms/blob/master/Modules/feed/engine/PHPFina.php)
 
 In many if not most applications time series data is recorded at a fixed interval. A temperature or power measurement is made every 10 seconds, minute or hour. Given this highly regular nature of the timeseries data we can do away with the need to record every datapoint's timestamp and instead just record the start time of the timeseries and the timeseries interval in a meta file and then only record the datapoint values in the datafile. The timestamp for any given datapoint can easily be worked out by the start time, interval and the position of the data point in the file.
 
@@ -71,3 +73,5 @@ The get data query parameters are the start time, end time and the data interval
         
         $i++;
      }
+
+Full PHPFina source code can be found here: [PHPFina.php](https://github.com/emoncms/emoncms/blob/master/Modules/feed/engine/PHPFina.php)
