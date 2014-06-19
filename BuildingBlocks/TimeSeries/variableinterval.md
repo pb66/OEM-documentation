@@ -1,5 +1,7 @@
 ## Variable interval
 
+PHPTimeSeries source code can be found here: [PHPTimeSeries.php](https://github.com/emoncms/emoncms/blob/master/Modules/feed/engine/PHPTimeSeries.php)
+
 Variable interval storage such as PHPTimeSeries records the timestamp along with the value for each datapoint in the data file. The datapoints are only allowed to be written in timestamp accending order so that the data file is always in an ordered state. This allows the timestamp to be used as an index on which a binary search can be used to find any datapoint at a given time.
 Each data point is stored as a fixed length binary. In PHPTimeSeries each datapoint is 9 bytes long. The first byte is a flag that can be used to indicate a deleted datapoint without physically removing that datapoint from the file. The next 4 bytes store the timestamp as an unsigned integer and the last 4 bytes store the value as a float. The primary reason to store each datapoint as fixed length binary data like this is that the program can know the start and end of each datapoint without searching through the file for endlines or other markers, the program knows that each datapoint starts at an integer number of 9 bytes.
 
@@ -88,3 +90,5 @@ This binary search function can then be called within a loop that itterates thro
         $result = $this->binarysearch($fh,$start+($i*$interval),$filesize);
         $data[] = array($time*1000,$result['value']);
     }
+
+Full PHPTimeSeries source code can be found here: [PHPTimeSeries.php](https://github.com/emoncms/emoncms/blob/master/Modules/feed/engine/PHPTimeSeries.php)
