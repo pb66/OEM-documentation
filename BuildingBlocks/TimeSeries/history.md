@@ -13,13 +13,13 @@ After around 5 months query times became increasingly slow nearing 12s for a his
 
 [12 Apr 2012: Speeding up emoncms feed data requests](http://openenergymonitor.blogspot.co.uk/2012/04/speeding-up-emoncms-feed-data-requests.html)
 
-While it worked sufficiently well on a server with a light load, as emoncms.org grew this approach became again unusable, whenever the mysql query queue became more than a few tens of lines the delay added, waiting for the queue to process each request slowed down the overall historical data request to significantly. A series of improvements to emoncms that reduced the number of mysql queries performed in input processing gave a little bit more time of ok performance but it never took long for emoncms to grow and usability to deteriorate. 
+While it worked sufficiently well on a server with a light load as emoncms.org grew this approach became again unusable. Whenever the mysql query queue became more than a few tens of lines the delay added as queue items waited to be processed slowed down the overall historical data request significantly. A series of improvements to emoncms that reduced the number of mysql queries performed in input processing gave a little bit more time of 'ok' performance but it never took long for emoncms to grow and usability to deteriorate. 
 
 [Emoncms input processing documentation](http://emoncms.org/site/docs/developinputproc)
 
 [30th May 2013: Emoncms.org load stats](http://openenergymonitor.blogspot.com/2013/05/emoncmsorg-load-stats.html)
 
-In May 2013 Mike Stirling who wrote a time series database called timestore got in touch, suggesting I took a look at his work. Timestore is a dedicated time series database written in c, its data request performance and disk use blew the results I had go so far with mysql away. Over halving disk use and reducing data request times by another 10x on a non loaded server and around 398x to 196ms on a busy server.
+In May 2013 Mike Stirling who wrote the [timestore time series database](http://www.mike-stirling.com/redmine/projects/timestore) got in contact, suggesting I took a look at his work. Timestore is a dedicated time series database written in c, its data request performance and disk use blew the results I had go so far with mysql away: Over halving disk use and reducing data request times by another 10x on a non loaded server and around 398x to 196ms on a busy server.
 
 [3rd Jun 2013: Timestore timeseries database](http://openenergymonitor.blogspot.com/2013/06/timestore-timeseries-database.html)
 
@@ -33,9 +33,11 @@ Timestore became the engine of choice within emoncms in late July 2013 providing
 
 [4th Jul 2013: More direct file storage research](http://openenergymonitor.blogspot.com/2013/07/more-direct-file-storage-research.html)
 
-While timestore solved the problem of reading historical data its write performance was slower than the mysql solution due to the addition of all the averaged layers. As I worked through converting emoncms.org feeds to it I noticed the server load climb significantly.
+While timestore solved the problem of reading historical data its write performance was slower than the mysql solution due to the addition of all the averaged layers with associated increase in disk IO. As I worked through converting emoncms.org feeds to it I noticed the server load climb significantly.
 
-Moving input and feed meta data (last updated time and value) to redis an in-memory database rather than using mysql which resulted in IO load caused another significant improvement in performance. By this time most of the meta data that did not need to be persistent and most of the feed data had been removed from mysql and either put in timestore, phptimeseries or redis.
+Moving input and feed meta data (last updated time and value) to redis an in-memory database rather than using mysql which resulted in disk IO load caused another significant improvement in performance. 
+
+By this time most of the meta data that did not need to be persistent and most of the feed data had been removed from mysql and either put in timestore, phptimeseries or redis.
 
 The next big capacity improvement came from moving the server to Solid State Drives (SSD's) which have much shorter seek times as there's no hard drive head that needs to move across a physical disk. Thanks to Ynyr Edwards for encouraging me to try redis and for helping with adding redis to emoncms as well as recommending the use of a dedicated server with SSD drives.
 
@@ -45,7 +47,7 @@ The next big capacity improvement came from moving the server to Solid State Dri
 
 [8th Nov 2013: Improving emoncms performance with Redis plus interesting consequences for SD cards](http://openenergymonitor.blogspot.co.uk/2013/11/improving-emoncms-performance-with_8.html)
 
-At this point with much reduced mysql load, very fast graph load times thanks to timestore it seemed that from an emoncms.org load and user experience point of view it seemed we had a winning solution, but a few months later another instability began to occur. Timestore would freeze up for seconds at a time. I managed to replicate the issue on my local machine. I poured through the timestore code (thanks to Mike for making timestore open source) and started to understand how timestore worked, Im not a good c programmer so to try and check if I understood it I started writing a port in php. I then did some performance testing on both versions. It turned out that the php port didn’t suffer from the stability issue and continued to be stable up to its maximum post rate which was over 10x the current emoncms.org load which was quite a result and so I decided to move over to using the php port with the added benefit that I now knew how every line of code worked and so could adapt as needed in future.
+At this point with much reduced mysql load, very fast graph load times thanks to timestore it seemed that from an emoncms.org load and user experience point of view it seemed we had a winning solution, but a few months later another instability began to occur. Timestore would freeze up for seconds at a time. I managed to replicate the issue on my local machine. I poured through the timestore code (thanks to Mike for making timestore open source) and started to understand how timestore worked, Im not a good c programmer so to try and check if I understood it I started writing a port in php. I then did some performance testing on both versions. It turned out that the php port didn’t suffer from the stability issue and continued to be stable up to its maximum post rate which was over 10x the current emoncms.org load and so I decided to move over to using the php port with the added benefit that I now knew how every line of code worked and so could adapt as needed in future.
 
 - [18th Feb 2014: Emoncms v8, New feed engines, PHPFiwa, PHPFina](http://openenergymonitor.org/emon/node/3868)
 - [Documentation: Variable interval time series](variableinterval.md)
@@ -62,7 +64,7 @@ These 3 engines provide between them an implementation that can fit most applica
 
 - PHPFiwa is great for power and temperature data. Averaging is useful in these cases and the data is highly regular without time shifts.
 - PHPFina is great for accumulating data where averaging provides no benefit.
-- PHPTimeSeries is great for irregular data such as state changes, but its also good for daily data while regular for most of the year goes may need to have an hour time shift due to daylight saving time changes.
+- PHPTimeSeries is great for irregular data such as state changes, but its also good for daily data while regular for most of the year may need to have an hour time shift due to daylight saving time.
 
 Time Series feed engine development is not yet complete, the current area of research is how best to add write buffering in order to make the writing of the time series data much more efficient.
 
