@@ -6,4 +6,4 @@
 - [Variable interval time series](variableinterval.md)
 - [Fixed interval time series](fixedinterval.md)
 - [Fixed interval with averaging time series](fixedintervalaveraging.md)
-- [Improving write performance with buffering]()
+- [Test results: Improving write performance with buffering](writeloadinvestigation.md)
