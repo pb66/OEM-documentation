@@ -119,7 +119,9 @@ Accumulating: PHPFina
 
     34.01,34.25,31.90,31.61,30.26,29.43,31.49,30.47,29.79
 
-12) Interestingly my other pi which was running at an average of 197 kb/s seemed to have significant mysql load which after removing histograms and daily kwh feeds reduced significantly to: 40.18,165.19,40.20,164.07,40.15,163.09,39.58,163.08,40.04,168.98,38.74
+12) Interestingly my other pi which was running at an average of 197 kb/s seemed to have significant mysql load which after removing histograms and daily kwh feeds reduced significantly to: 
+
+    40.18,165.19,40.20,164.07,40.15,163.09,39.58,163.08,40.04,168.98,38.74
 
 This suggests that histogram and kwhd feeds in mysql may cause a large amount of load the more they grow, possibly due to the load caused by needing to maintain indexes (given that adding histograms and kwhd feeds present little change on the new system) and would suggest it best not to use mysql feeds on SD cards.
 
