@@ -2,7 +2,7 @@
 
 A single PHPFiwa or PHPTimeSeries datapoint in emoncms uses between 4 and 9 bytes. The write load on the disk however is a bit more complicated than that. Most filesystems and disk's have a minimum IO size that is much larger than 4-9 bytes, on a FAT filesystem the minimum IO size is 512 bytes this means that if you try and write 4 bytes the operation will actually cause 512 bytes of write load. But its not just the datafile that gets written to, every file has inode meta data which can also result in a further 512 bytes of write load. A single 4 byte write can therefore cause 1kb of write load.
 
-By buffering writes for as long as we can in memory and then writing in larger blocks its possible to reduce the write load considerably. The following investigation looks at the performance of the ext4 and fat filesystem for individual datapoint writes and then the current version of emoncms before going on to look at how emoncms could be improved by buffering writes.
+By buffering writes for as long as we can in memory and then writing in larger blocks its possible to reduce the write load significantly. The following investigation looks at the performance of the ext4 and fat filesystem for individual datapoint writes and then the current version of emoncms before going on to look at how emoncms could be improved by buffering writes.
 
 ### SD Card formatted with vFAT
 
