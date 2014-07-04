@@ -137,6 +137,8 @@ A minimal version of emoncms that is write efficient could use either PHPFina wi
 
 A cut down version of emoncms has been developed to test this and the idea of write buffering so that emoncms can write in larger blocks. The following tests on both a FAT filesystem and Ext4 show the results: 
 
+[Source code: Cut down version of emoncms](https://github.com/emoncms/development/tree/master/experimental/emon-py)
+
 ### Adding write buffering (vFAT)
 
     TEST 1 1s COMMIT TIME, 25X 60s FEEDS, 20X 10s FEEDS
