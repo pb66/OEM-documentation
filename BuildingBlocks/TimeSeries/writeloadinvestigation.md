@@ -127,9 +127,9 @@ This suggests that histogram and kwhd feeds in mysql may cause a large amount of
 
 ### Developing a minimal version of emoncms that is write efficient
 
-A 10s PHPFiwa feed writes to 4 datafiles and 1 metadata file per datapoint + 5 file inodes
-A 10s PHPFina feed writes to 1 datafile and 1 metadata file per datapoint + 2 file inodes
-A 10s PHPTimeSeries feed writes to 1 datafile file per datapoint + 1 file inode
+- A 10s PHPFiwa feed writes to 4 datafiles and 1 metadata file per datapoint + 5 file inodes
+- A 10s PHPFina feed writes to 1 datafile and 1 metadata file per datapoint + 2 file inodes
+- A 10s PHPTimeSeries feed writes to 1 datafile file per datapoint + 1 file inode
 
 PHPFina and PHPFiwa can be rewritten to not require the npoints datafile as npoints can be calculated from the filesize stored in the files inode file descriptor.
 
