@@ -95,11 +95,11 @@ Accumulating: PHPFina
     15.38,15.88,15.79,16.05
     15.30,15.36,15.76,15.15,15.98,15.95,16.02
 
-6) +13 60s Temperature feeds and +12 60s battery voltage feeds all PHPFIWA
+6) +13 60s Temperature feeds and +12 60s battery voltage feeds all PHPFIWA (25x 60s PHPFiwa, 12x 10s PHPFiwa)
 
     24.30,25.72,24.90,24.68,24.38,24.79,24.22,24.82
 
-7) +2x PHPFina
+7) +2x PHPFina (25x 60s PHPFiwa, 12x 10s PHPFiwa, 2x PHPFina 10s)
 
     25.57,25.81,25.60,26.83,26.70,28.20,26.05
 
@@ -107,7 +107,7 @@ Accumulating: PHPFina
 
     25.07,25.93,25.55,25.57,26.23,26.68,25.86, 26.04
 
-9) 3+2 more PHPFINA, + 2 more PHPFiwa
+9) 5 more PHPFINA, + 2 more PHPFiwa (25x 60s PHPFiwa, 14x 10s PHPFiwa, 7x PHPFina 10s)
 
     30.41,30.22,30.12,30.94,30.79,30.74,32.03
 
