@@ -180,6 +180,8 @@ A cut down version of emoncms has been developed to test this and the idea of wr
     TEST 5 30 minutes COMMIT TIME, 25x 60s FEEDS, 20x 10s FEEDS
     Bytes written every 30 minutes: 17396,17460,17084,17276,17564,17240 bytes
     Write load 30 min average: 0.14,0.13,0.12,0.14,0.16 kb_wrtn/s
+    
+Update 7th July 14: Testing on Ext2 which is a non-journaling file system show the same results as obtained on Ext4, suggesting that the main difference may be the block size rather than the additional write load caused by journaling.
 
 ### Conclusion
 
@@ -197,3 +199,5 @@ Adding write buffering to emoncms complicates the implementation but looks like 
 Is the reduced write load and longer SD card lifespan that might result from using the FAT filesystem worth the increased chance of data corruption from power failure that Ext4 might prevent?
 
 It would be interesting to compare the performance of the FAT filesystem + 5 min application based commit time with the EXT4 filesystem with journalling turned off and filesystem delayed allocation set to 5 min instead of write buffering in the application.
+
+The Ext2 test results suggest that journaling on Ext4 isnt as large a source of write load initially thought. If the main difference is the block size (512 bytes vs 4096 bytes) then this would suggest that to obtain the same level of write load performance you would need to save the data to disk on Ext4 less often.
