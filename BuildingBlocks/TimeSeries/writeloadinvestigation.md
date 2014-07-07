@@ -1,6 +1,6 @@
 ## Investigation into effect of minimum IO size on write performance and potential for improvement by buffering writes
 
-A single PHPFiwa or PHPTimeSeries datapoint in emoncms uses between 4 and 9 bytes. The write load on the disk however is a bit more complicated than that. Most filesystems and disk's have a minimum IO size that is much larger than 4-9 bytes, on a FAT filesystem the minimum IO size is 512 bytes this means that if you try and write 4 bytes the operation will actually cause 512 bytes of write load. But its not just the datafile that gets written to, every file has inode meta data which can also result in a further 512 bytes of write load. A single 4 byte write can therefore cause 1kb of write load.
+A single PHPFina (PHP Fixed Interval No averaging) or PHPTimeSeries datapoint in emoncms uses between 4 and 9 bytes. The write load on the disk however is a bit more complicated than that. Most filesystems and disk's have a minimum IO size that is much larger than 4-9 bytes, on a FAT filesystem the minimum IO size is 512 bytes this means that if you try and write 4 bytes the operation will actually cause 512 bytes of write load. But its not just the datafile that gets written to, every file has inode meta data which can also result in a further 512 bytes of write load. A single 4 byte write can therefore cause 1kb of write load.
 
 By buffering writes for as long as we can in memory and then writing in larger blocks its possible to reduce the write load significantly. The following investigation looks at the performance of the ext4 and fat filesystem for individual datapoint writes and then the current version of emoncms before going on to look at how emoncms could be improved by buffering writes.
 
@@ -183,7 +183,7 @@ A cut down version of emoncms has been developed to test this and the idea of wr
 
 ### Conclusion
 
-It appears that just using PHPFiwa (Without the npoints metafile) reduces the write load from ~31 kb\_wrtn/s to ~ 6kb\_wrtn/s on an Ext4 filesystem. This is very close to the 5x reduction that we might expect from not writing to all the additional average layers and associated inodes that PHPFiwa requires.
+It appears that just using PHPFina (Without the npoints metafile) reduces the write load from ~31 kb\_wrtn/s to ~ 6kb\_wrtn/s on an Ext4 filesystem. This is very close to the 5x reduction that we might expect from not writing to all the additional average layers and associated inodes that PHPFiwa requires.
 
 Using the FAT filesystem provides another ~4x reduction or 20x reduction overall. An additional overhead is expected due to the way Journalling works. Journalling records all disk writes to a journal first before actually writing to the data location on the disk. This reduces the likelihood of corruption in the event of a crash or power failure but at an additional write cost.
 
