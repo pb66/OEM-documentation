@@ -22,6 +22,16 @@ Open, downloadable, editable documentation (via git).
 
 ## Building Blocks
 
+### Android App development
+
 * [How to build an Energy Monitoring Android App P1 - Retrieving data from a remote server such as emoncms.org](BuildingBlocks/AndroidApp/AndroidAppPart1.md)
 * [How to build an Energy Monitoring Android App P2 - Drawing an Energy Monitoring display with java 2d canvas](BuildingBlocks/AndroidApp/AndroidAppPart2.md)
 * [Drawing a myelectric style bar chart](BuildingBlocks/DrawingABarChart/DrawingABarChart.md)
+
+### Time Series Database design
+
+- [Emoncms time series database development history](BuildingBlocks/TimeSeries/history.md)
+- [Variable interval time series](BuildingBlocks/TimeSeries/variableinterval.md)
+- [Fixed interval time series](BuildingBlocks/TimeSeries/fixedinterval.md)
+- [Fixed interval with averaging time series](BuildingBlocks/TimeSeries/fixedintervalaveraging.md)
+- [Test results: Improving write performance with buffering](BuildingBlocks/TimeSeries/writeloadinvestigation.md)
