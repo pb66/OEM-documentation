@@ -1,9 +1,5 @@
 ## Modelling building energy performance
 
-It is suprisingly straighforward to gain significant insight into a buildings energy performance, such as working out how much heating energy it should require to keep it at 20C for a year by doing a little math. This guide walks through how to do these calculations starting with a simple model and advancing through to a full SAP model and beyond to some very simple dynamic simulation.
-
-The guide is currently a work in progress, if you'd like to help get in contact
-
 The following diagram illustrates the most common factors taken into account in building energy models:
 
 ![diagram.png](files/diagram.png)
@@ -11,8 +7,10 @@ The following diagram illustrates the most common factors taken into account in 
 
 ### Part 1: Heat losses
 
-- Conduction through building fabric: walls, windows, loft, floor, thermal bridges. Calculated via material U-values or thermal conductivity.
-- Ventilation and Infiltration
+- [Conduction through building fabric](fabricheatloss.md): walls, windows, loft, floor, thermal bridges. Calculated via material U-values or thermal conductivity.
+- [Ventilation and Infiltration](ventilation.md)
+
+- [A Simple JavaScript model for calculating heat demand](SimpleJSModel.md)
 
 ### Part 2: Internal gains
 
