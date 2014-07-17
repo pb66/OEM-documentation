@@ -68,21 +68,23 @@ it should output:
     Annual heating demand: 22570 kWh
 
 **Seasonal temperature variation**
+
 So far to keep things simple we have assumed constant external temperature and internal temperature. There are different ways to take into account temperature variation, one common method is degree days http://www.degreedays.net/introduction.
 
 The SAP model uses average indoor temperature minus average external temperature on a monthly basis to calculate total heat demand and then it has a factor that reduces the % of a month the heating is on for if gains from solar and internal sources are significant.
 
 **Different sources of heat gain**
+
 What we have covered so far covers the heat loss side of the equation but the heating energy requirement is not yet what our heating system needs to provide instead it is the total heat energy going into the system that is our house including heat from other sources in addition to the main heating system, the other heat gains typically taken into account are: Solar gains and Internal Gains which usually consist of Cooking, Lighting  Appliances and metabolic gains (These are the sources covered in the SAP model)
 
 The full energy balance equation for a steady state building energy model looks like this:
 
-    solar_gains + cooking + lighting + hotwater + appliances + metabolic + heating_system =
-( fabric_heat_loss_WK + infiltration_WK) x (internal_temperature – external_temperature)
+    solar_gains + cooking + lighting + hotwater + appliances + metabolic + heating_system = (fabric_heat_loss_WK + infiltration_WK) x (internal_temperature – external_temperature)
 
 This is really the fundamental equation that describes a simple steady state building energy model, a large part of the SAP model is concerned with calculating estimates for all the variables that go into this equation.
 
 **Integrating Monitoring into a building energy model.**
+
 The above equation shows several variables that could be provided or inferred to some degree by monitoring.
 
 Internal temperature could be provided by an array of temperature sensors throughout a building. External temperature could be provided by an external temperature sensor or pulled in from a local weather station.
