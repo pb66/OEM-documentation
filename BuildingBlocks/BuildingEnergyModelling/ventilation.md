@@ -47,7 +47,7 @@ Entering our example values in the simplifed equation, we get:
 
 ### Working out air-changes per hour
 
-The hard part in the quation above to work out is of course the air changes per hour of a building. The most accurate way to find it out is to perform an air tightness test of the building. This involves de-pressurising the building with specialist fans attached to an external door.
+The hard part in the equation above to work out is of course the air changes per hour of a building. The most accurate way to find it out is to perform an air tightness test of the building. This involves de-pressurising the building with specialist fans attached to an external door.
 
 The SAP model provides a method to estimate the air-change rate in the absence of a measured value. This method takes into account factors from number of chimneys and flues to wind speed and the degree the building is sheltered from the wind.
 
