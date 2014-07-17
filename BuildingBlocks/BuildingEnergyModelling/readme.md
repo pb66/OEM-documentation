@@ -4,11 +4,6 @@ The following diagram illustrates the most common factors taken into account in 
 
 ![diagram.png](files/diagram.png)
 
-
-### Development context and history
-
-- [Context and history of OpenBEM](history.md)
-
 ### Part 1: Heat losses
 
 - [Conduction through building fabric](fabricheatloss.md): walls, windows, loft, floor, thermal bridges. Calculated via material U-values or thermal conductivity.
@@ -55,3 +50,7 @@ As above but on a daily basis
 
 **Dynamic simulations**
 The simple model's use averaged annual, monthly datasets and so give outputs that are averages for a year/month. Dynamic simulations can give far greater detail and can be useful for finding out what happens in extremes of climate: hour-by-hour on a sunny day in June rather than the average for June. 
+
+#### Development context and history
+
+- [Context and history of OpenBEM](history.md)
