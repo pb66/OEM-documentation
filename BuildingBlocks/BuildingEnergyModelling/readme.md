@@ -28,6 +28,14 @@ The following diagram illustrates the most common factors taken into account in 
 - Utilisation factors of gains
 - Thermal mass
 
+### Dynamic modelling
+
+- [A simple dynamic building model](dynamicmodel.md)
+
+### Other
+- [A simple radiator model](radiatormodel.md)
+- [A simple heatpump model](heatpumpmodel.md)
+
 ### Model types
 
 For examples of the following model types see the model [examples page](modelexamples.md).
