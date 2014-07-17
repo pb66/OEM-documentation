@@ -5,6 +5,10 @@ The following diagram illustrates the most common factors taken into account in 
 ![diagram.png](files/diagram.png)
 
 
+### Development context and history
+
+- [Context and history of OpenBEM](history.md)
+
 ### Part 1: Heat losses
 
 - [Conduction through building fabric](fabricheatloss.md): walls, windows, loft, floor, thermal bridges. Calculated via material U-values or thermal conductivity.
