@@ -1,4 +1,4 @@
-# Development history
+# Development history of OpenBEM
 
 A summary of building energy modelling development within the OpenEnergyMonitor project.
 
