@@ -1,47 +1,32 @@
-## How to setup a full stack emoncms raspberry PI + HDD basestation + scheduler
+## Archived on 23rd July 2014
 
-This guide details how to install emoncms and the heating scheduler module on a rfm12pi + raspberrypi + HDD hardware setup.
+Replaced with latest emonhub and buffered write emoncms branch, see here: [https://github.com/emoncms/emoncms/tree/bufferedwrite](https://github.com/emoncms/emoncms/tree/bufferedwrite)
 
-The heating scheduler module makes it possible to control heating schedules in several zones in a building, its a module that is in the early stages of development.
+### How to setup a full stack emoncms raspberry PI + HDD basestation
 
-The following diagram gives an overview of the main software components involved in the application:
+This guide details how to setup a raspberry pi basestation with local data logging and visualisation accessible in the same way as you would access your home router on your local LAN.
 
-![systemdesignscheduler200514.png](files/systemdesignscheduler200514.png)
+**NOTE: THIS IS DOCUMENTATION IS FOR AN UNSTABLE IN DEVELOPMENT VERSION OF EMONCMS THAT EXPLORES A NEW MQTT ENABLED APPROACH AS IS BEING DISCUSSED HERE [https://github.com/emonhub/emonhub/issues/29](https://github.com/emonhub/emonhub/issues/29). It makes use of the MQTT development branch of emoncms and packetgen.** - 21 May 2014
+
+The highlighted parts are the parts that have at least an initial development version working and is documented in the setup documentation below:
+
+![systemdesign21May14.jpg](files/systemdesign21May14.jpg)
 
 Start by downloading the official raspberrpi raspbian image
 
     [http://www.raspberrypi.org/downloads](http://www.raspberrypi.org/downloads)
     
-Upload the image to both the harddrive and the SD Card. On Linux dd can be used for this but care needs to be taken to ensure you select the correct target device so as not to loose data
-
-To check the mount location of the SD card or harddrive use:
-
-    df -h
-    
-Unmount any mounted SD card partitions
-    
-    umount /dev/sdb1
-    umount /dev/sdb2
-    
-Write the raspbian image to the SD card (Make sure of=/dev/sdb is the correct location)
+Upload the image to both the harddrive and the SD Card. On Linux dd can be used for this but care needs to be taken to ensure you select the correct target device so as not to loose data.
     
     sudo dd bs=4M if=2014-01-07-wheezy-raspbian.img of=/dev/sdb
     
-## Running from the harddrive:
+### Running from the harddrive:
  
 ### Change /boot/cmdline.txt on the SD card
 
 Mount the SD Card on your computer and open the boot partition. Open to edit the file:
 
     /boot/cmdline.txt
-    
-**Tip** a useful tool for opening a terminal window in a particular linux folder is nautilus-open-terminal
-
-    sudo apt-get install nautilus-open-terminal
-    
-You will need to logout and log back in to your computer and then right click in the folder and click on open in terminal.
-    
-You may need to use sudo to open the file.
 
 Over write with:
 
@@ -113,17 +98,7 @@ Edit the _inittab_ file to allow the python serial listener to use the serial po
 At the bottom of the file comment out the line, by adding a ‘#’ at beginning:
 
     # T0:23:respawn:/sbin/getty -L ttyAMA0 115200 vt100
-    
-Install Logger
 
-    sudo pear channel-discover pear.apache.org/log4php
-    sudo pear install log4php/Apache_log4php
-
-ensure that log file has write permissions for www-data, pi and root.
-
-    cd
-    > emoncms.log
-    sudo chmod 660 /home/pi/emoncms.log 
 
 ### Security
 
@@ -222,8 +197,6 @@ Exit mysql by:
     
 ### Create data repositories for emoncms feed engine's
 
-You can copy and paste all of these in one go (press enter at the end)
-
     sudo mkdir /var/lib/phpfiwa
     sudo mkdir /var/lib/phpfina
     sudo mkdir /var/lib/phptimeseries
@@ -255,46 +228,17 @@ Enter in your database settings.
 
 Save (Ctrl-X), type Y and exit
 
-### Install packetgen and scheduler
+### Install packetgen
 
     cd /var/www/emoncms/Modules
     git clone -b mqtt https://github.com/emoncms/packetgen.git
-    
-    git clone https://github.com/emoncms/scheduler.git
 
 ### Create an account in emoncms and login
 This will automatically create the database
 
-### Setup the scheduler
+### Test run the serial listener and node processor processes.
 
-**1) The first thing to do is set up the zones:**
-
-a) Open the scheduler interface file /var/www/emoncms/Modules/scheduler/scheduler_view.php.
-
-b) Navigate to line 164:
-
-    var zones = ['Kitchen','Room1','Zone3','Zone4','hotwater'];
-
-These are the names of the example zones, change these to the zone names you wish to have.
-
-If your temperature feeds have the same names as the zone names, the scheduler interface will automatically pick up the temperature value and display it next to the zone name in the scheduler interface.
-
-If there is a feed called outside, its value will also be picked up and displayed. The name of the outside feed to pick up can be set with: var outsidetempname = 'outside';
-
-If your zone name's dont change you will need to force the interface to rewrite the configuration by setting: (line 160)
-
-    var overwritedb = false;
-
-to
-
-    var overwritedb = true;
-    
-**Note: scheduler_run.php start position**
-Its possible to set the position in the packet gen packet that the schedule variables get written too. The default position is to start at the 4th variable, to change it open scheduler_run.php and change the $start_variable = 4; at the top of the script
-
-### Test run
-
-Login to your pi three times to create three terminal windows.
+Login to your pi twice to create two terminal windows.
 
 Locate the emoncms run folder:
 
@@ -311,46 +255,6 @@ In the first terminal window run jeelistener.py
 In the second terminal window run nodeprocessor.php
 
     sudo php nodeprocessor.php
-    
-And in the third terminal window run scheduler_run.php
 
-    sudo php /var/www/emoncms/Modules/scheduler/scheduler_run.php
-
-With these three scripts running data should now start to appear in the emoncms node interface.
-
-Navigate to the PacketGen module in emoncms: Extras > RFM12b Packet Generator
-
-You should now see the zone set points and zone states in the packetgen interface, the temperatures are multiplied by 100 so that they can be sent as 2 byte integers.
-
-![files/exampleofpacketgen.png](files/exampleofpacketgen.png)
-
-### Permanent run
-
-**1) Running with cron**
-
-Running the scripts via cron in this way will guarantee that the script restarts if it for any reason crashes and exits. Cron will try to run the script once every minute but the script has an inbuilt check to ensure that only one instance of the script runs at any given time.
-
-    sudo crontab -e
-
-add the following lines:
-
-    * * * * * python /var/www/emoncms/run/jeelistener.py 2>&1
-    * * * * * php /var/www/emoncms/run/nodeprocessor.php 2>&1
-    * * * * * php /var/www/emoncms/Modules/scheduler/scheduler_run.php 2>&1
-    
-To stop these scripts, remove the entries from cron and kill the processes manually.
-
-To find the process id of the python script run: 
-
-    ps aux | grep python 
-    
-and php:
-
-    ps aux | grep php
-    
-kill the scripts:
-    
-    kill _processid_
-    
-As this develops its likely that these will be ran from a debian service script.
+With both of these scripts running data should now start to appear in the emoncms node interface and when you change the packet state in packetgen you should see rf packets being send immedietly from the rfm12pi.
 

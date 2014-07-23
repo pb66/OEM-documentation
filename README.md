@@ -16,10 +16,6 @@ Open, downloadable, editable documentation (via git).
 
 ### RaspberryPI
 
-* [Gateway](Modules/RaspberryPI/Gateway/gateway.md)
-* [Full Stack HDD](Modules/RaspberryPI/FullStackHDD/FullStackHDD.md)
-* [Full Stack HDD + scheduler](Modules/RaspberryPI/FullStackHDDScheduler/FullStackHDDScheduler.md)
-
 ## Building Blocks
 
 ### Android App development
@@ -35,3 +31,9 @@ Open, downloadable, editable documentation (via git).
 - [Fixed interval time series](BuildingBlocks/TimeSeries/fixedinterval.md)
 - [Fixed interval with averaging time series](BuildingBlocks/TimeSeries/fixedintervalaveraging.md)
 - [Test results: Improving write performance with buffering](BuildingBlocks/TimeSeries/writeloadinvestigation.md)
+
+### Archive
+
+* [Gateway](Archive/RaspberryPI/Gateway/gateway.md)
+* [Full Stack HDD](Archive/RaspberryPI/FullStackHDD/FullStackHDD.md)
+* [Full Stack HDD + scheduler](Archive/RaspberryPI/FullStackHDDScheduler/FullStackHDDScheduler.md)

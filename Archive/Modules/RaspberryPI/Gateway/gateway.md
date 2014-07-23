@@ -1,4 +1,8 @@
-## How to setup a raspberry PI based gateway (node interface)
+## Archived on 23rd July 2014
+
+Replaced with latest emonhub and buffered write emoncms branch, see here: [https://github.com/emoncms/emoncms/tree/bufferedwrite](https://github.com/emoncms/emoncms/tree/bufferedwrite)
+
+### How to setup a raspberry PI based gateway (node interface)
 
 This guide details how to setup a raspberry pi based gateway that receives data from wireless sensor nodes using the rfm12pi adapter board and then forwards that data on to a remote emoncms server for logging and visualisation. 
 
