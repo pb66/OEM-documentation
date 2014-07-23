@@ -16,6 +16,8 @@ Open, downloadable, editable documentation (via git).
 
 ### RaspberryPI
 
+See: [https://github.com/emoncms/emoncms/tree/bufferedwrite](https://github.com/emoncms/emoncms/tree/bufferedwrite)
+
 ## Building Blocks
 
 ### Android App development
@@ -33,6 +35,8 @@ Open, downloadable, editable documentation (via git).
 - [Test results: Improving write performance with buffering](BuildingBlocks/TimeSeries/writeloadinvestigation.md)
 
 ### Archive
+
+Depreciated archieved documentation:
 
 * [Gateway](Archive/RaspberryPI/Gateway/gateway.md)
 * [Full Stack HDD](Archive/RaspberryPI/FullStackHDD/FullStackHDD.md)
