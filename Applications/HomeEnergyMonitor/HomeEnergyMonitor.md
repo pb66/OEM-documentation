@@ -172,4 +172,4 @@ Open the page on your mobile phone and bookmark it. When you click on the bookma
 
 The appliance list tool is a useful exercise for answering questions such as how much electricity can be save by using low energy lighting such as LED's? How much electricity does turning off lighting when not in use save?
 Login to emoncms.org and then navigate to Extras > Report > Appliance list
-The Electricity audit and savings case study provides more background on the appliance list exercise
+[The Electricity audit and savings case study](http://openenergymonitor.org/emon/sustainable-energy/electricity-audit-and-savings-case-study) provides more background on the appliance list exercise
