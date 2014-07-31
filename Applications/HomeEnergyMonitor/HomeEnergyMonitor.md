@@ -130,29 +130,37 @@ Navigate to the inputs page in your emoncms.org account, you should now see a li
 
 ## Setting up emoncms
 
-Navigate to the Node tab.
+**Input naming**
 
-Click on the name of the node that appeared, it should show a drop down menu. Select the node type: EmonTx V3 (Continuous sampling with Wh totals). This will turn the undefined node into a full populated node with a list of available variables.
+Navigate to the Input tab in emoncms.org, you should see a list of inputs, 9 in all. The inputs wont have any names to start with. Click on the pencil edit icon and enter the names in this screenshot so that you can identify the inputs:
 
-![System overview](files/nodes.png)
+![homeenergymonitor_inputlist.png](files/homeenergymonitor_inputlist.png)
 
-Click on Config for:
+If you know what CT1 Power is you may want give it a more indicative name such as 'house power'.
 
-Power CT1: Select Log to feed, enter a name for the feed such as "Power CT1" or House Power or whatever, select the PHPFiwa feed engine and select the 10s feed interval (this is the same rate at which the EmonTx is posting)
+Once complete refresh the page, this will make the naming available in the next step.
 
-Wh CT1: Again select Log to feed, enter a name for the feed such as "Wh CT1" or House Wh, select the PHPFina feed engine and select the 10s feed interval.
+**Log to feed**
 
-If your using the other CT's repeat for each CT.
+Click on the wrench icon for CT1 Power: Select *Log to feed*. Enter a name for the feed such as "CT1 Power" or House Power or whatever, it should suggest the name you gave the input. Select the Fixed Interval With Averaging (PHPFiwa) feed engine and select the 10s feed interval (this is the same rate at which the EmonTx is posting). Click Add to create the feed.
 
-Click on My Electric.
+![homeenergymonitor_inputconfig.png](files/homeenergymonitor_inputconfig.png)
 
-Click on the middle of the my electric page to bring up the configuration interface.
+**Wh accumulator**
 
-Select under the power feed: Power CT1
+Click on the wrench icon for CT1 Wh: Select *Wh accumulator*. Enter a name for the feed or use suggested, select the Fixed Interval No Averaging (PHPFina) feed engine and select the 10s feed interval.
 
-and under the Wh feed Wh CT1.
+*If your using the other CT's repeat for each CT.*
 
-click save
+**View feeds**
+
+Click on the feeds tab, you should now see two feeds: CT1 Power and CT1 Wh. You can view a graph of these feeds by clicking on the view icon.
+
+**My Electric**
+
+Click on the My Electric tab. Click on the wrench top-right on the my electric page to bring up the configuration interface.
+
+Select under the power feed: CT1 Power, and under the bar graph feed: CT1 Wh, select *'watt hours elapsed'* for *'Bar graph feed type'*. Click save to complete.
 
 Thats it you should now see your home electricity dashboard.
 
