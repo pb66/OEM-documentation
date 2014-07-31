@@ -59,27 +59,16 @@ Plug in the AC-AC Voltage adapter this both power's the emonTx and is used for s
 
 Plug the RFM12Pi hardware expansion module onto the Pi's GPIO pins taking care to align up pin 1, the RFM12Pi should be connected to the GPIO pins connector closest to the edge of the pi.
 
-## Setting up the RaspberryPI as a bytevalue gateway forwarder
+## Setting up the RaspberryPI
 
-**[How to: setup a raspberrypi gateway for sending data to emoncms.org (node only mode)](../../Modules/RaspberryPI/Gateway/gateway.md)**
-_Uses emonhub to forward data directly to emoncms.org without decoding on the raspberrypi_
+The easiest way to setup a RaspberryPI for use an OpenEnergyMonitor base-station is to use the ready-to-go image. The image has EmonHub and emoncms pre-installed and can be used to post data to a remote emoncms server such as emoncms.org or it can be used to record data locally on the SD card, or a connected hard-drive.
 
-Ready to go image download:
-[2014-05-19-emonhub-gateway.img.zip](http://files.openenergymonitor.org/2014-05-19-emonhub-gateway.img.zip)
+Download the ready-to-go image here: [emonSD-28-07-14.img.zip](http://files.openenergymonitor.org/emonSD-28-07-14.img.zip)
 
-If you use the ready to go image you may want to start by updating emonhub, ssh into the raspberrypi:
+*The full setup for the raspberrypi emonhub and emoncms software stack os described here, including a step by step build guide if you would prefer to build the image yourself: [https://github.com/emoncms/emoncms/tree/bufferedwrite](https://github.com/emoncms/emoncms/tree/bufferedwrite)*
 
-    rpi-rw
-    cd emonhub
-    git pull
-    cp conf/emonhub-node-example.conf /boot/emonhub.node-example.conf
-    
-To use emonhub in basic 'node' mode which just forwards the data to emoncms.org (or other remote emoncms server) copy the emonhub.node-example.conf configuration file and rename to emonhub.conf.
-Open emonhub.conf to edit and set the radio group and frequency and then the remote server url and apikey to match your emoncms account.
 
-Complete by restarting emonhub
 
-    sudo service emonhub restart 
 
 ## Setting up emoncms
 
