@@ -49,6 +49,8 @@ Robin Emley and the watt hour calculation code mentioned above.
 if you wish to change it. Plug up your emonTx v3 with a usb to serial programmer 
 and click on Upload.
 
+![rfsettings.png](files/rfsettings.png)
+
 **Continuing with the hardware installation:**
 
 Place or wall-mount your emontx near your meter cabinet
@@ -155,6 +157,8 @@ Click on the wrench icon for CT1 Wh: Select *Wh accumulator*. Enter a name for t
 **View feeds**
 
 Click on the feeds tab, you should now see two feeds: CT1 Power and CT1 Wh. You can view a graph of these feeds by clicking on the view icon.
+
+![feeds.png](files/feeds.png)
 
 **My Electric**
 
