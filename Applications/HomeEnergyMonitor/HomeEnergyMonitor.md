@@ -65,8 +65,22 @@ The easiest way to setup a RaspberryPI for use an OpenEnergyMonitor base-station
 
 Download the ready-to-go image here: [emonSD-28-07-14.img.zip](http://files.openenergymonitor.org/emonSD-28-07-14.img.zip)
 
-*The full setup for the raspberrypi emonhub and emoncms software stack os described here, including a step by step build guide if you would prefer to build the image yourself: [https://github.com/emoncms/emoncms/tree/bufferedwrite](https://github.com/emoncms/emoncms/tree/bufferedwrite)*
+*The full setup for the raspberrypi emonhub and emoncms software stack is described here, including a step by step build guide if you would prefer to build the image yourself: [https://github.com/emoncms/emoncms/tree/bufferedwrite](https://github.com/emoncms/emoncms/tree/bufferedwrite)*
 
+Write the image to the SD Card using an image writting tool (The minimum SD card size is 4GB). Insert the SD card in the raspberry pi, connect up the rfm12pi adapter board, power and ethernet.
+
+It usually takes a minute to boot up the ACT light on the PI should be actively flickering for the first minute.
+
+Find the raspberrypi's IP address on your network, this can usually be found in your router status page. Alternatively there's a useful app called fing that can be used to scan for devices on a network.
+
+Login to the raspberrypi with SSH (Putty is a useful tool to do this on windows).
+
+    user@user:~$ ssh pi@192.168.1.70
+    pi@192.168.1.70's password:
+
+The password is: raspberry
+
+### Configuring EmonHub to post to emoncms.org
 
 
 
