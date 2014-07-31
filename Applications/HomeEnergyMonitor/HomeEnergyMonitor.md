@@ -82,7 +82,51 @@ The password is: raspberry
 
 ### Configuring EmonHub to post to emoncms.org
 
+By default the main operating system partition on the raspberry pi is in read-only mode, this helps preserve SD card lifespan. To edit the emonhub configuration we need to first place the raspberrypi in write mode:
 
+    rpi-rw
+    
+Then open emonhub.conf to edit with:
+
+    nano /etc/emonhub/emonhub.conf
+    
+Under the title 'Dispatchers' you will see the dispatcher entry: 
+    
+    [[emonCMS]]
+        type = EmonHubEmoncmsDispatcher
+        [[[init_settings]]]
+        [[[runtime_settings]]]
+            url = http://localhost/emoncms
+            apikey = xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+            
+Change the url to http://emoncms.org and set the apikey to your emoncms.org account apikey.
+
+Under the title 'Listeners' set the radio frequency and group of your radio network. This should be the same frequency and group as set in the emontx above.
+
+The emontx firmware that we installed above has a non standard packet structure, it uses the long datatype in addition to integers. We therefore need to tell emonhub to decode the data received from the emontx accordingly. This is done in the nodes section:
+
+Under the title 'Nodes' replace the lines:
+    
+    [[99]]
+            datacode = h
+            datacodes = l, h, h, h,
+
+with:
+
+    [[10]]
+            datacodes = L, h, h, h, h, l, l, l, l
+        
+Change [[10]] to the node id of your emontx if its different.
+
+    L = unsigned long
+    h = signed integer
+    l = signed long
+
+To finsish, save and exit and then place the raspberrypi back in read-only mode:
+
+    rpi-ro
+
+Navigate to the inputs page in your emoncms.org account, you should now see a list of variables. The next section details how to configure these variables.
 
 ## Setting up emoncms
 
