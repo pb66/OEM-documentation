@@ -65,7 +65,7 @@ Plug the RFM12Pi hardware expansion module onto the Pi's GPIO pins taking care t
 
 The easiest way to setup a RaspberryPI for use an OpenEnergyMonitor base-station is to use the ready-to-go image. The image has EmonHub and emoncms pre-installed and can be used to post data to a remote emoncms server such as emoncms.org or it can be used to record data locally on the SD card, or a connected hard-drive.
 
-Download the ready-to-go image here: [emonSD-28-07-14.img.zip](http://files.openenergymonitor.org/emonSD-28-07-14.img.zip)
+Download the ready-to-go image here: [emonSD-13-08-14.img.zip](http://files.openenergymonitor.org/emonSD-13-08-14.img.zip)
 
 *The full setup for the raspberrypi emonhub and emoncms software stack is described here, including a step by step build guide if you would prefer to build the image yourself: [https://github.com/emoncms/emoncms/tree/bufferedwrite](https://github.com/emoncms/emoncms/tree/bufferedwrite)*
 
