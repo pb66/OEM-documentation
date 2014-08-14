@@ -90,12 +90,12 @@ By default the main operating system partition on the raspberry pi is in read-on
     
 Then open emonhub.conf to edit with:
 
-    nano /etc/emonhub/emonhub.conf
+    sudo nano /boot/emonhub.conf
     
 Under the title 'Dispatchers' you will see the dispatcher entry: 
     
     [[emonCMS]]
-        type = EmonHubEmoncmsDispatcher
+        type = EmonHubEmoncmsReporter
         [[[init_settings]]]
         [[[runtime_settings]]]
             url = http://localhost/emoncms
