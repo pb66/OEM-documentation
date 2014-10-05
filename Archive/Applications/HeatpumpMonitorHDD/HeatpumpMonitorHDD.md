@@ -1,4 +1,6 @@
-# Heatpump Monitor (local HDD)
+# Archived
+
+## Heatpump Monitor (local HDD)
 
 **(emonTx v3, Raspberry Pi, Emoncms V8, Local harddrive installation)**
 
