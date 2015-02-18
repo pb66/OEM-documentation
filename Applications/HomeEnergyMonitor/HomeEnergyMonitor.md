@@ -92,7 +92,7 @@ Then open emonhub.conf to edit with:
 
     sudo nano /boot/emonhub.conf
     
-Under the title 'Reporters' you will see the dispatcher entry: 
+Under the title 'Reporters' you will see the reporter entry: 
     
     [[emonCMS]]
         type = EmonHubEmoncmsReporter
