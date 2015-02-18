@@ -103,6 +103,24 @@ Under the title 'Reporters' you will see the dispatcher entry:
             
 Change the url to http://emoncms.org and set the apikey to your emoncms.org account apikey.
 
+To send data to both a local and remote installation of emoncms:
+
+    [reporters]
+
+    [[emonCMS_local]]
+        type = EmonHubEmoncmsReporter
+        [[[init_settings]]]
+        [[[runtime_settings]]]
+            url = http://localhost/emoncms
+            apikey = xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+            
+    [[emonCMS_remote]]
+        type = EmonHubEmoncmsReporter
+        [[[init_settings]]]
+        [[[runtime_settings]]]
+            url = http://emoncms.org
+            apikey = xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
 Under the title 'Listeners' set the radio frequency and group of your radio network. This should be the same frequency and group as set in the emontx above.
 
 The emontx firmware that we installed above has a non standard packet structure, it uses the long datatype in addition to integers. We therefore need to tell emonhub to decode the data received from the emontx accordingly. This is done in the nodes section:
