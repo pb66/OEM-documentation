@@ -1,5 +1,8 @@
 #Developing a new module
 There is not a rule about how to make a new module but several things should be taken into account. The aim of this section is to provide information that can guide the process of developing a new module.
+
+This documentation has been written for EmonCMS v8.4.0, for future versions what is said here may be wrong or incomplete
+
 ##Model-View-Controller (MVC) paradigm
 EmonCMS uses the **Model-View-Controller (MVC)** paradigm where the **Controller** deals with the user/node request using the functionality defined in the **Model** (that works as a kind of library). 
 
@@ -50,7 +53,7 @@ Another way to call our module could be what is known as **direct access**. Look
 
  `http://server/Modules/mymodule/mymodule_controller.php`
 
-The result of this is unpredictable and can give the client info about the system. So this is a security hole. In order to avoid this, *all the php files in a module must begin with*:
+The result of this is unpredictable and can give the client info about the system. So this is a security hole. In order to avoid this, **all the php files in a module must begin with**:
 ```
 defined('EMONCMS_EXEC') or die('Restricted access');
 ```
@@ -69,7 +72,7 @@ $nodeid = preg_replace('/[^\w\s-.]/','',get('node'));
 ##Using the database.
 EmonCMS works with two databases: a **MySQL** one and a **REDIS**.
 
-The **MySQL** database can be accessed with the global variable `$mysqli`. It is an instance of the **php class mysqli**. You can see how to use it the php documentation: http://php.net/manual/en/class.mysqli.php
+The **MySQL** database can be accessed with the global variable `$mysqli`. It is an instance of the **php class mysqli**. You can see how to use it in the php documentation: http://php.net/manual/en/class.mysqli.php
 
 There is another global variable for the **REDIS** : `$redis`. **It would be good to add something else here explaining how to use it**.
 ##The output of your module
