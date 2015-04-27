@@ -23,12 +23,14 @@ $route-> format = format
 ##$session
 Associative array that stores info about permissions after a user or a node has authenticated.
 $session['userid']: the session has been started by this user or a node that belongs to him/her
--**$session['read']** session with read privileges (1 for true, 0 for false)
--**$session['write']**: session with write privileges (1 for true, 0 for false)
--**$session['admin']**: session with admin privileges (1 for true, 0 for false)
--**$session['editmode']**: I don't know what it is for and i haven't been able to find any usage
--**$session['lang']**: language to be used, useful for the html output;
+- **$session['read']** session with read privileges (1 for true, 0 for false)
+- **$session['write']**: session with write privileges (1 for true, 0 for false)
+- **$session['admin']**: session with admin privileges (1 for true, 0 for false)
+- **$session['editmode']**: I don't know what it is for and i haven't been able to find any usage
+- **$session['lang']**: language to be used, useful for the html output;
+
 ##$user
 Object that is an instance of the class User. This class is defined in `Modules/user/user_model.php` 
-This global variable is useful if you need to deal with: user login, user authentication, set/get user info like username, id, apikeys, email, language or timezone
+This global variable is useful if you need to deal with: user login, user authentication, set/get user info like username, id, apikeys, email, language or timezone.
+
 To know everything you can do using its methods, have look at the model.
