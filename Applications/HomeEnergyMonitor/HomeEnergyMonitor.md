@@ -180,6 +180,8 @@ Click on the feeds tab, you should now see two feeds: CT1 Power and CT1 Wh. You 
 
 **My Electric**
 
+**Note** myelectric has now been integrated in an application specific dashboards module called app. On emoncms.org this is available under the Apps tab. The github repository for the app module can be found here https://github.com/emoncms/app and can be installed by downloading or git cloneing into the emoncms/Modules folder.
+
 Click on the My Electric tab. Click on the wrench top-right on the my electric page to bring up the configuration interface.
 
 Select under the power feed: CT1 Power, and under the bar graph feed: CT1 Wh, select *'watt hours elapsed'* for *'Bar graph feed type'*. Click save to complete.
