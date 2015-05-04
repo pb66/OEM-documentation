@@ -70,11 +70,73 @@ A simple way of sanitazing the node in the example above would be:
 $nodeid = preg_replace('/[^\w\s-.]/','',get('node'));
 ```
 ##Using the database.
-EmonCMS works with two databases: a **MySQL** one and a **REDIS**.
+EmonCMS works with two databases:
+
+- **MySQL**: used to store persistent data, which means *data we want to keep in case we switch off the server.*
+- **REDIS**: it is an in memory database.  It is very fast to access and can improve performance: reading/writing to disk (what we do when using the MySQL database) takes longer that doing it to memory (REDIS). Also it can increase the life span of the SD card in the RaspberryPi (limited number of writes). When the server switches off the data in REDIS will be lost unless it has been dumped into disk.
+
+Using one or the other database depends on what is the aim of the data to store. As said before if we want to keep the data, it should go to the MySQL. But if what we want is to cache that data to use it later, REDIS is the one to use. It can also be the case that we store the data in both databases.
+
+A good example can be found in `Modules/feed/feed_model`:
+```
+ public function create($userid,$name,$datatype,$engine,$options_in)
+    {
+	    //code removed for the example
+        $result = $this->mysqli->query("INSERT INTO feeds (userid,name,datatype,public,engine) VALUES ('$userid','$name','$datatype',false,'$engine')");
+        $feedid = $this->mysqli->insert_id;
+
+        if ($feedid>0)
+        {
+            // Add the feed to redis
+            if ($this->redis) {
+                $this->redis->sAdd("user:feeds:$userid", $feedid);
+                $this->redis->hMSet("feed:$feedid",array(
+                    'id'=>$feedid,
+                    'userid'=>$userid,
+                    'name'=>$name,
+                    'datatype'=>$datatype,
+                    'tag'=>'',
+                    'public'=>false,
+                    'size'=>0,
+                    'engine'=>$engine
+                ));
+            }
+            /code removed for the example
+		}
+	}		            
+```
+In the example the feed is first added in the MySQL database but then in the REDIS one too.
+In the next example, we see that when fetching feeds we first try to get them from REDIS and if we are not using REDIS then we fetch them from the MySQL one.
+```
+    public function get_user_feeds($userid)
+    {
+        $userid = (int) $userid;
+        
+        if ($this->redis) {
+            $feeds = $this->redis_get_user_feeds($userid);
+        } else {
+            $feeds = $this->mysql_get_user_feeds($userid);
+        }    
+        
+        return $feeds;
+    }
+```
+
+###Working with the MySQL database
 
 The **MySQL** database can be accessed with the global variable `$mysqli`. It is an instance of the **php class mysqli**. You can see how to use it in the php documentation: http://php.net/manual/en/class.mysqli.php
 
-There is another global variable for the **REDIS** : `$redis`. **It would be good to add something else here explaining how to use it**.
+###Working with the REDIS database
+In order to use this database, REDIS must be installed inn the server. For Linux users go to your terminal:
+```
+sudo apt-get install redis-server 
+sudo pecl install channel://pecl.php.net/dio-0.0.6 redis swift/swift
+sudo sh -c 'echo "extension=redis.so" > /etc/php5/apache2/conf.d/20-redis.ini'
+sudo sh -c 'echo "extension=redis.so" > /etc/php5/cli/conf.d/20-redis.ini'
+```
+EmonCMS will connect to the REDIS database if it is running. You can have access to it with the global variable `$redis` which will be `false` if the EmonCMS couldn't connect to REDIS.
+
+Add list of typical methods we use with $redis
 ##The output of your module
 When **index.php** calls the controller, **it expects an associative array (with one element that has 'content' as key) to be returned**.
 
