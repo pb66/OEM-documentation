@@ -179,7 +179,8 @@ or
 ```
 $this->log->info("PHPTimestore:post id=$feedid timestamp=$timestamp value=$value");
 ```
-**Where is the log file stored???, does it go the apache logs???**
+By default the log file is stored in `/var/log/emoncms.log`.
+
 ##Database autosetup
 Probably your new module will need to use one table or more from the database. Normally when developing you will create the table manually but for production you want it to be created automatically. **A schema for the table must be defined.**
 
