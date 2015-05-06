@@ -75,7 +75,7 @@ EmonCMS works with two databases:
 - **MySQL**: used to store persistent data, which means *data we want to keep in case we switch off the server.*
 - **REDIS**: it is an in memory database.  It is very fast to access and can improve performance: reading/writing to disk (what we do when using the MySQL database) takes longer that doing it to memory (REDIS). Also it can increase the life span of the SD card in the RaspberryPi (limited number of writes). When the server switches off the data in REDIS will be lost unless it has been dumped into disk.
 
-Using one or the other database depends on what is the aim of the data to store. As said before if we want to keep the data, it should go to the MySQL. But if what we want is to cache that data to use it later, REDIS is the one to use. It can also be the case that we store the data in both databases.
+Using one or the other database depends on what is the aim of the data to store. As said before if we want to keep the data, it should go to the MySQL. But if what we want is to cache some data to use it later, REDIS is the one to use. It can also be the case that we store the data in both databases: in the MySQL to ensure the data is kept in cas of the server being switched off but in REDIS to speed up the process. 
 
 A good example can be found in `Modules/feed/feed_model`:
 ```
