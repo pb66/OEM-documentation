@@ -161,9 +161,9 @@ A **View** is a php file that makes a web page. Therefore in a **View** we norma
 
 A **View** is called in the **Controller** as follows:
 ```
-$result = view("Modules/mymodule/Views/myview_view.php", array($variable));
+$result = view("Modules/mymodule/Views/myview_view.php", ['variable_1' => $variable_1, 'variable_2' => $variable_2]);
 ```
-where the elements in `array()` can be accesed directly in the **View**.
+where the elements in `array()` can be accesed in the **View** with $args: `$args['variable_1]` and `$args['variable_2']`.
 
 For generating a webpage with language support have a look at the *Locale (translations)* section.
 ##Logging information
