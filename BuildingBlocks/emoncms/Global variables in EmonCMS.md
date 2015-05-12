@@ -29,6 +29,7 @@ Associative array that stores info about permissions after a user or a node has 
 $session['userid']: the session has been started by this user or a node that belongs to him/her
 - **$session['read']** session with read privileges (1 for true, 0 for false)
 - **$session['write']**: session with write privileges (1 for true, 0 for false)
+- **$session['userid']**: id of the user who has started the session (it can be logged in with the web browser or with the API key in the query string from a node request)
 - **$session['admin']**: session with admin privileges (1 for true, 0 for false)
 - **$session['editmode']**: I don't know what it is for and i haven't been able to find any usage
 - **$session['lang']**: language to be used, useful for the html output;
