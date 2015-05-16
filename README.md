@@ -2,6 +2,8 @@
 
 Open, downloadable, editable documentation (via git).
 
+Work in progress, See [OpenEnergyMonitor.org building blocks section](openenergymonitor.org/emon/buildingblocks) for most of our other documentation
+
 **Home Energy Monitor**
 
 * [Home Energy Monitor (posting to emoncms.org)](Applications/HomeEnergyMonitor/HomeEnergyMonitor.md)
