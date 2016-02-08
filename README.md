@@ -1,3 +1,5 @@
+**Update 8th Feb 2016:** This repository started as an experiment to move elements of OpenEnergyMonitor documentation to github which has not been continued. The repository does however contain useful documentation on the emoncms timeseries database design and android app development which continues to be relevant.
+
 ### Android App development
 
 * [How to build an Energy Monitoring Android App P1 - Retrieving data from a remote server such as emoncms.org](BuildingBlocks/AndroidApp/AndroidAppPart1.md)
