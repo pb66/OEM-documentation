@@ -2,8 +2,6 @@
 
 Open, downloadable, editable documentation (via git).
 
-Work in progress, See [OpenEnergyMonitor.org building blocks section](openenergymonitor.org/emon/buildingblocks) for most of our other documentation
-
 **Home Energy Monitor**
 
 * [Home Energy Monitor (posting to emoncms.org)](Applications/HomeEnergyMonitor/HomeEnergyMonitor.md)
@@ -12,14 +10,9 @@ Work in progress, See [OpenEnergyMonitor.org building blocks section](openenergy
 
 These examples need updating to use latest emonhub + emoncms setup:
 
-* [Heatpump Monitor (with emoncms running locally on a harddrive)](Applications/HeatpumpMonitorHDD/HeatpumpMonitorHDD.md)
 * [Heatpump Monitor (direct serial emontx -> RPi + GSM](Applications/HeatpumpMonitorSerialGSM/HeatpumpMonitorSerialGSM.md)
 
 ## Modules
-
-### RaspberryPI
-
-See: [https://github.com/emoncms/emoncms/tree/bufferedwrite](https://github.com/emoncms/emoncms/tree/bufferedwrite)
 
 ## Building Blocks
 
