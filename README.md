@@ -1,21 +1,3 @@
-## Applications
-
-Open, downloadable, editable documentation (via git).
-
-**Home Energy Monitor**
-
-* [Home Energy Monitor (posting to emoncms.org)](Applications/HomeEnergyMonitor/HomeEnergyMonitor.md)
-
-**Heatpump Monitor** 
-
-These examples need updating to use latest emonhub + emoncms setup:
-
-* [Heatpump Monitor (direct serial emontx -> RPi + GSM](Applications/HeatpumpMonitorSerialGSM/HeatpumpMonitorSerialGSM.md)
-
-## Modules
-
-## Building Blocks
-
 ### Android App development
 
 * [How to build an Energy Monitoring Android App P1 - Retrieving data from a remote server such as emoncms.org](BuildingBlocks/AndroidApp/AndroidAppPart1.md)
@@ -34,6 +16,8 @@ These examples need updating to use latest emonhub + emoncms setup:
 
 Depreciated archieved documentation:
 
+* [Heatpump Monitor (direct serial emontx -> RPi + GSM](Applications/HeatpumpMonitorSerialGSM/HeatpumpMonitorSerialGSM.md)
+* [Home Energy Monitor (posting to emoncms.org)](Applications/HomeEnergyMonitor/HomeEnergyMonitor.md)
 * [Gateway](Archive/RaspberryPI/Gateway/gateway.md)
 * [Full Stack HDD](Archive/RaspberryPI/FullStackHDD/FullStackHDD.md)
 * [Full Stack HDD + scheduler](Archive/RaspberryPI/FullStackHDDScheduler/FullStackHDDScheduler.md)
