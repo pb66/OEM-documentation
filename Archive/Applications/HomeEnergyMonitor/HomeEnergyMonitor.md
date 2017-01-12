@@ -1,3 +1,5 @@
+# Archived
+
 # Home Energy Monitor
 
 **(emonTx v3, Raspberry Pi, Emoncms V8)**
@@ -108,20 +110,20 @@ To send data to both a local and remote installation of emoncms:
     [reporters]
 
     [[emonCMS_local]]
-        type = EmonHubEmoncmsReporter
+        Type = EmonHubEmoncmsReporter
         [[[init_settings]]]
-        [[[runtime_settings]]]
+        [[[runtimesettings]]]
             url = http://localhost/emoncms
             apikey = xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
             
     [[emonCMS_remote]]
-        type = EmonHubEmoncmsReporter
+        Type = EmonHubEmoncmsReporter
         [[[init_settings]]]
-        [[[runtime_settings]]]
+        [[[runtimesettings]]]
             url = http://emoncms.org
             apikey = xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
-Under the title 'Listeners' set the radio frequency and group of your radio network. This should be the same frequency and group as set in the emontx above.
+Under the title 'Interfacers' set the radio frequency and group of your radio network. This should be the same frequency and group as set in the emontx above.
 
 The emontx firmware that we installed above has a non standard packet structure, it uses the long datatype in addition to integers. We therefore need to tell emonhub to decode the data received from the emontx accordingly. This is done in the nodes section:
 

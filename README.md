@@ -1,27 +1,4 @@
-## Applications
-
-Open, downloadable, editable documentation (via git).
-
-Work in progress, See [OpenEnergyMonitor.org building blocks section](openenergymonitor.org/emon/buildingblocks) for most of our other documentation
-
-**Home Energy Monitor**
-
-* [Home Energy Monitor (posting to emoncms.org)](Applications/HomeEnergyMonitor/HomeEnergyMonitor.md)
-
-**Heatpump Monitor** 
-
-These examples need updating to use latest emonhub + emoncms setup:
-
-* [Heatpump Monitor (with emoncms running locally on a harddrive)](Applications/HeatpumpMonitorHDD/HeatpumpMonitorHDD.md)
-* [Heatpump Monitor (direct serial emontx -> RPi + GSM](Applications/HeatpumpMonitorSerialGSM/HeatpumpMonitorSerialGSM.md)
-
-## Modules
-
-### RaspberryPI
-
-See: [https://github.com/emoncms/emoncms/tree/bufferedwrite](https://github.com/emoncms/emoncms/tree/bufferedwrite)
-
-## Building Blocks
+**Update 8th Feb 2016:** This repository started as an experiment to move elements of OpenEnergyMonitor documentation to github which has not been continued. The repository does however contain useful documentation on the emoncms timeseries database design and android app development which continues to be relevant.
 
 ### Android App development
 
@@ -41,6 +18,8 @@ See: [https://github.com/emoncms/emoncms/tree/bufferedwrite](https://github.com/
 
 Depreciated archieved documentation:
 
+* [Heatpump Monitor (direct serial emontx -> RPi + GSM](Applications/HeatpumpMonitorSerialGSM/HeatpumpMonitorSerialGSM.md)
+* [Home Energy Monitor (posting to emoncms.org)](Applications/HomeEnergyMonitor/HomeEnergyMonitor.md)
 * [Gateway](Archive/RaspberryPI/Gateway/gateway.md)
 * [Full Stack HDD](Archive/RaspberryPI/FullStackHDD/FullStackHDD.md)
 * [Full Stack HDD + scheduler](Archive/RaspberryPI/FullStackHDDScheduler/FullStackHDDScheduler.md)
